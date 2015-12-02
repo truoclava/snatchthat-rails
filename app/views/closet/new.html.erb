@@ -1,0 +1,6 @@
+<h3>Create your closet</h3>
+<%= form_for :closet, url: {action: 'create'} do |f|%>
+<%= f.label "Name"%>
+<%= f.text_field :name%>
+<%= f.submit "Submit"%>
+<% end%>
