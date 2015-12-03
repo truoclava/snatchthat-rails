@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :closets
   end
   resources :items
-  resources :closet_items, only: [:create]
+  resources :closet_items, only: [:create, :new]
 
   devise_scope :user do
     authenticated :user do
