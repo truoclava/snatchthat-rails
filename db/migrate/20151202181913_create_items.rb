@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :name
       t.string :url
       t.integer :price
-      t.integer :source_id
+      t.string :source_id
       t.timestamps null: false
     end
   end
