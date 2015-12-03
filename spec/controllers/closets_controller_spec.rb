@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ClosetController, type: :controller do
+RSpec.describe ClosetsController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
