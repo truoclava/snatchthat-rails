@@ -27,6 +27,9 @@ body { padding-top: 0px; }
 #box {
  padding-left: 60px;
 }
+#home-button {
+  color: white;
+}
 
 // And finally bootswatch style itself
 @import "bootswatch/flatly/bootswatch";
