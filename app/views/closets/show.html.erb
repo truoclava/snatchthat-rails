@@ -1,7 +1,10 @@
 <h1><%= @closet.name %></h1>
-<%= @closet.items.each do |item| %>
-  <%= item.name %>
+<% @closet.items.each do |item| %>
+ <p>
+  <%= item.name %><br>
   <%= item.url %>
+  <br>
+  </p>
 <% end %>
 
 <%= link_to "New Item", new_item_path %>
