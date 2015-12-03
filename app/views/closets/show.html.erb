@@ -14,7 +14,7 @@
 <% @closet.items.each do |item| %>
  <div class = "col-md-4" style = "height:200px; width:200px;">
   Item: <%= link_to item.name, item_path(item) %><br>
-  Url: <a href = "#"><%= item.url %></a><br>
+  Url: <%= item.url %><br>
   Price: $<%= item.price %><br>
   ASIN: $<%= item.source_id %>
  </div>
