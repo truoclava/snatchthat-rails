@@ -1,0 +1,62 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+//Import bootstrap-sprockets
+@import "bootstrap-sprockets";
+
+// Import cerulean variables
+@import "bootswatch/flatly/variables";
+
+// Then bootstrap itself
+@import "bootstrap";
+
+// Bootstrap body padding for fixed navbar
+body { padding-top: 0px; }
+#box {
+ padding-left: 60px;
+}
+
+#box {
+  padding-left: 60px;
+}
+
+.butt{
+   border: 1px solid #ddd;
+   background-color: #f0f0f0;
+   
+   height: 100 px;
+   width: 100 px;
+
+
+    -o-transition: background-color .2s ease-in; 
+    -moz-transition: background-color .2s ease-in;
+
+    -webkit-transition: background-color .2s ease-in; 
+    transition: background-color .2s ease-in; 
+}
+
+.butt:hover {
+    background-color: #e5e5e5;    
+}
+
+.butt:active {
+    background-color: #ccc;
+}
+
+// And finally bootswatch style itself
+@import "bootswatch/flatly/bootswatch";
+
+// Whatever application styles you have go last
+/*@import "base";*/
