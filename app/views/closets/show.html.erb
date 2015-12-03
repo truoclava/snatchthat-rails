@@ -1,8 +1,11 @@
+
 <h1><%= @closet.name %></h1>
+
+
 <% @closet.items.each do |item| %>
  <p>
-  <%= item.name %><br>
-  <%= item.url %>
+  Item: <%= link_to item.name, item_path(item) %><br>
+  Url: <%= item.url %>
   <br>
   </p>
 <% end %>

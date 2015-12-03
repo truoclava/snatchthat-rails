@@ -1,2 +1,7 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<h1><%= @item.name %></h1><br>
+<%= @item.url %>
+
+Closets:
+<% @item.closets.each do |closet| %>
+  <br><h2><%= link_to closet.name, user_closet_path(current_user, closet) %></h2>
+<% end %>
