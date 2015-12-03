@@ -8,30 +8,10 @@
 </head>
 <body>
 <%= render 'layouts/navbar' %>
-<ul class="hmenu">
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to('Login', new_user_session_path)  %>
-    </li>
-  <% end %>
-
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to('Edit registration', edit_user_registration_path) %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to('Register', new_user_registration_path)  %>
-    </li>
-  <% end %>
-</ul>
-
+<div id="box">
 
 <%= yield %>
 
+</div>
 </body>
 </html>
