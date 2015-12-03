@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @current_user = current_user
     @item = Item.new
   end
 

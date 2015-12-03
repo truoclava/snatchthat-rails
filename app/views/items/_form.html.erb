@@ -6,8 +6,8 @@
     <%= f.text_field :url %><br>
 
   </div>
-
-  <% @current_user.closets.each do |closet| %>
+  <%= label_tag :closets %><br>
+  <% current_user.closets.each do |closet| %>
     <%= check_box_tag 'closet_ids[]', closet.id -%>
     <%= closet.name -%>
   <% end %>

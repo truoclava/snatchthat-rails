@@ -1,7 +1,6 @@
 class ClosetsController < ApplicationController
 
   def new
-    @current_user = current_user
     @closet = Closet.new
   end
 
@@ -12,10 +11,6 @@ class ClosetsController < ApplicationController
   def create
     @closet = Closet.new(closet_params)
     @closet.save
-
-    # new_closet = Closet.create(name: params[:closet][:name])
-    # new_closet.board_id = params[:user_id]
-    # new_closet.save
     redirect_to '/'
   end
 

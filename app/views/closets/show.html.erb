@@ -1,7 +1,6 @@
-<div id = "box">
+
 
 <h1><%= @closet.name %></h1>
-
 
 
 <div class = "row">
@@ -11,18 +10,12 @@
   ''text-decoration: none;', :class => "butt"} %></h1>
   </div>
 
-<% @closet.items.each do |item| %>
 
+<% @closet.items.each do |item| %>
  <div class = "col-md-4" style = "height:200px; width:200px;">
-  <%= item.name %>
-  <br>
-  <a href = "#"><%= item.url %></a>
-  <br><br>
+  Item: <%= link_to item.name, item_path(item) %><br>
+  Url: <a href = "#"><%= item.url %></a>
  </div>
 <% end %>
 
 </div>
-
-
-</div>
-
