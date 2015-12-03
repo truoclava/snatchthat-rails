@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   after_create :create_board
+  has_one :board
+  has_many :closets, through: :board
+  has_many :closet_items, through: :closets
+  has_many :items, through: :closet_items
 
   private
   def create_board

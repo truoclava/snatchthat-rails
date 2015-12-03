@@ -1,0 +1,7 @@
+<h1><%= @closet.name %></h1>
+<%= @closet.items.each do |item| %>
+  <%= item.name %>
+  <%= item.url %>
+<% end %>
+
+<%= link_to "New Item", new_item_path %>

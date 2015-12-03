@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users, only:[:show] do
     resources :closets
   end
+  resources :items
+  resources :closet_items, only: [:create]
 
   devise_scope :user do
     authenticated :user do
