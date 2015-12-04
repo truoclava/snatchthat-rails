@@ -1,5 +1,4 @@
-
-class Twi
+class TwilioMessage < ActiveRecord::Base
 
   attr_accessor :client, :twilio_number, :phone_number
 
@@ -21,4 +20,5 @@ class Twi
       )
       puts "Success"
     end
+
 end
