@@ -11,12 +11,12 @@ class TwilioMessage < ActiveRecord::Base
     end
 
     def send_message
-      alert_message = "Yo twilio worked!!"
+      message_body = "Yo twilio worked!!"
 
       message = client.account.messages.create(
         :from => twilio_number,
         :to => phone_number,
-        :body => alert_message,
+        :body => message_body,
       )
       puts "Success"
     end
