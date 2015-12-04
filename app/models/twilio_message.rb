@@ -11,7 +11,7 @@ class TwilioMessage < ActiveRecord::Base
     end
 
     def send_message
-      message_body = "Yo twilio worked!!"
+      message_body = "Do you see this message???? Twilio testing worked!! tada~~~! "
 
       message = client.account.messages.create(
         :from => twilio_number,
