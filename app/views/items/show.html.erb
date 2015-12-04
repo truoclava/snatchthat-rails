@@ -1,7 +1,13 @@
 <h1><%= @item.name %></h1><br>
-<%= @item.url %>
+<p>
+  <strong>URL:</strong><%= @item.url %><br>
+  <strong>Price:</strong> <%= @item.price %><br>
+  <strong>Source Id:</strong> <%= @item.source_id %>
+</p>
 
-Closets:
+
+<br><br>
+<h3>Closets:</h3>
 <% @item.closets.each do |closet| %>
-  <br><h2><%= link_to closet.name, user_closet_path(current_user, closet) %></h2>
+  <br><li><%= link_to closet.name, user_closet_path(current_user, closet) %></li>
 <% end %>
