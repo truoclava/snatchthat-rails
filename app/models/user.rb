@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   has_many :closets, through: :board
   has_many :closet_items, through: :closets
   has_many :items, through: :closet_items
-
+  
   private
   def create_board
     Board.create(user_id: self.id)
