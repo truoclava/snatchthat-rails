@@ -16,13 +16,13 @@ class TwilioMessage < ActiveRecord::Base
       @auth_token = ENV["twilio_auth_token"]
       @client = Twilio::REST::Client.new(@account_sid, @auth_token)
       @twilio_number = ENV["twilio_our_num"]
-      @phone_number = ENV["twilio_user_num"]
     end
 
 
     def send_message
       message_body = "Do you see this message???? Twilio testing worked!! tada~~~! "
 
+      phone_number = '+12016212617'
       message = client.account.messages.create(
         :from => twilio_number,
         :to => phone_number,
