@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  name       :string
 #  url        :string
-#  source_id  :string
+#  source_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -40,7 +40,6 @@ end
 
 def get_asin
   self.source_id = self.url.match("/([a-zA-Z0-9]{10})(?:[/?]|$)")[1]
-
 end
 
 

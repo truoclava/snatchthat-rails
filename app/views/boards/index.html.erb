@@ -1,5 +1,5 @@
 <div id = "box">
-<h1><%= current_user.email%>'s Closets:</h1>
+<h1><%= current_user.username%>'s Closets:</h1>
 <% @closets.each do |closet| %>
   <div class="field">
   <%= link_to closet.name, user_closet_path(current_user, closet) %>

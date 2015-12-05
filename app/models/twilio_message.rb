@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: twilio_messages
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class TwilioMessage < ActiveRecord::Base
 
   attr_accessor :client, :twilio_number, :phone_number
@@ -9,6 +18,7 @@ class TwilioMessage < ActiveRecord::Base
       @twilio_number = '+19734197784'
       @phone_number = '+12016212617'
     end
+
 
     def send_message
       message_body = "Do you see this message???? Twilio testing worked!! tada~~~! "
