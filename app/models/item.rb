@@ -15,6 +15,8 @@ class Item < ActiveRecord::Base
   has_many :closets, through: :closet_items
 
 
+
+
 def get_current_price
   # AmazonAdapter.new(self).price
   request = Vacuum.new('US')
