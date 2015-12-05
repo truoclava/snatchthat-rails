@@ -12,11 +12,11 @@ class TwilioMessage < ActiveRecord::Base
   attr_accessor :client, :twilio_number, :phone_number
 
     def initialize
-      @account_sid = 'ACcfb9256efb61c21830f4ec93497598c7'
-      @auth_token = '02e37c6d92cdf53c827b344e535511ad'
+      @account_sid = ENV["twilio_sid"]
+      @auth_token = ENV["twilio_auth_token"]
       @client = Twilio::REST::Client.new(@account_sid, @auth_token)
-      @twilio_number = '+19734197784'
-      @phone_number = '+12016212617'
+      @twilio_number = ENV["twilio_our_num"]
+      @phone_number = ENV["twilio_user_num"]
     end
 
 
