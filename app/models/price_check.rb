@@ -8,6 +8,7 @@ class PriceCheck
         # binding.pry
         # item.update_item
         # if you uncomment the code below, twilio function will work
+        # Let's discuss when you see this.
         # Adapters::TwilioMessageClient.new.send_message(price_dif, item)
       else
         # update last check time
