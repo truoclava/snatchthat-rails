@@ -2,11 +2,14 @@ module Adapters
   class RailsApiConnection
     include HTTParty
 
-    attr_reader :connection, :client, :twilio_number
+    attr_reader :connection
 
     def initialize
-      @client = Twilio::REST::Client.new(ENV["twilio_sid"], ENV["twilio_auth_token"])
-      @twilio_number = ENV["twilio_our_num"]
+       @connection = self.class
+    end
+
+    def query
+      results = connection.get("http://snatchthat-rails-api.herokuapp.com/api/items")
     end
 
   end
