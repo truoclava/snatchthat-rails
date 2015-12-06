@@ -5,7 +5,8 @@
 #  id         :integer          not null, primary key
 #  name       :string
 #  url        :string
-#  source_id  :integer
+#  price      :integer
+#  source_id  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -32,6 +33,7 @@ def get_current_price
     'ItemId' => self.source_id,
     'ResponseGroup' => "ItemAttributes"
   })
+
 
   item_attributes = response.to_h['ItemLookupResponse']['Items']['Item']['ItemAttributes']
   current_price = item_attributes['ListPrice']['FormattedPrice']

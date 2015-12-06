@@ -19,7 +19,8 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
-  post 'twilio/sms' => 'twilio#sms'
+
+  resources :searchs
 
 
 
