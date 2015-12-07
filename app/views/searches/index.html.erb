@@ -1,6 +1,9 @@
-<h1>Search result from Amazon</h1>
-<% @item_array.each do |item|%>
-  <li>
-    <%=item%>
-  </li>
-<%end%>
+<%= render 'form' %>
+
+<% @item_asins.each do |item_asin| %>
+  <%= form_tag new_item_path, method: "get" do %>
+    <%= item_asin %>
+    <%= hidden_field_tag 'item[source_id]', item_asin %>
+    <%= submit_tag('Add Item to Closet')%>
+  <% end %>
+<% end %>

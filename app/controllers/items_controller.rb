@@ -3,12 +3,15 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    if params[:item] == nil
+      @item = Item.new
+    else
+      @item = Item.new(item_params)
+    end
   end
 
   def create
     @item = Item.new(item_params)
-    @item.get_asin
     @item.amazon_info
     @item.save
 
@@ -24,6 +27,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:url)
+    params.require(:item).permit(:source_id)
   end
 end
