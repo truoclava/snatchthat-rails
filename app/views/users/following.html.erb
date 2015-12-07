@@ -1,5 +1,6 @@
+<strong>Following</strong>
 <% @following.each do |following| %>
 <p>
- <%= following.username %>
+ <div class="col-xs-3"><a href = "/users/<%=following.slug%>"><%= following.username %></div>
 </p>
 <% end %>
