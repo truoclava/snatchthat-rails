@@ -39,6 +39,9 @@ class User < ActiveRecord::Base
   has_many :closets, through: :board
   has_many :closet_items, through: :closets
   has_many :items, through: :closet_items
+  has_many :active_relationships, class_name:  "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent:   :destroy
 
   attr_accessor :login
 
