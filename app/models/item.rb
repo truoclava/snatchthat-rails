@@ -16,7 +16,7 @@ class Item < ActiveRecord::Base
 
 
 def get_current_price
-  # AmazonAdapter.new(self).price
+  #AmazonAdapter.new(self).price
   request = Vacuum.new('US')
 
   request.configure(
