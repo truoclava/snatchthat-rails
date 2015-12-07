@@ -14,7 +14,9 @@
 class Item < ActiveRecord::Base
   has_many :closet_items
   has_many :closets, through: :closet_items
+  has_many :prices
 
+  
   # def get_asin
   #   self.source_id = self.url.match("/([a-zA-Z0-9]{10})(?:[/?]|$)")[1]
   # end
