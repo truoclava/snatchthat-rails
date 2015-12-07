@@ -23,7 +23,7 @@ module Adapters
         :to => phone_number,
         :body => "Hello Hide, your #{item_instance.name}, #{good_bad_news}, link: #{item_instance.url}"
       )
-      puts "The notification has been proplery sent to (item.user.name)"
+      puts "The notification has been properly sent to (item.user.name)"
     end
 
     def comment_creater(price_dif, item_instance)
