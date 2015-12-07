@@ -46,6 +46,21 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
+  # Follows a user.
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  # Unfollows a user.
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
   def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
       if login = conditions.delete(:login)
@@ -65,6 +80,8 @@ class User < ActiveRecord::Base
       errors.add(:username, :invalid)
     end
   end
+
+
 
   private
   def create_board
