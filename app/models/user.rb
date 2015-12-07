@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
 
 
   after_create :create_board
+
   has_one :board
   has_many :closets, through: :board
   has_many :closet_items, through: :closets

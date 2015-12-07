@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :notification do
+  factory :search do
     
   end
 

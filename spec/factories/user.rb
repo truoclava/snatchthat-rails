@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :user do
-    email 'john@flatironschool.com'
+     email 'john@flatironschool.com'
+     username 'hide'
     # factory :user_with_closets do
     #
     #   transient do
