@@ -77,6 +77,11 @@ body { padding-top: 0px; }
   }
 }
 
+.mybtn{
+   height: 100 px;
+   width: 100 px;
+}
+
 // And finally bootswatch style itself
 @import "bootswatch/flatly/bootswatch";
 
