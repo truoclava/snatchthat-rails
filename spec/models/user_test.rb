@@ -1,16 +1,12 @@
 require 'spec_helper'
 
-RSpec.describe User, type: :model do
+describe User do
 
   describe "#user" do
-
-    # let (:user){FactoryGirl.create(:user)}
-    # context 'when there is no email' do
-    #   it 'is invalid if there is no email' do
-    #     user.email = nil
-    #     expect(user).to_not be_valid
-    #   end
-    # end
-
+    it "should follow and unfollow a user" do
+      michael = users(:michael)
+      archer  = users(:archer)
+      binding.pry
+    end
   end
 end

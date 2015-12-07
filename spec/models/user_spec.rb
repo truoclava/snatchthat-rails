@@ -19,8 +19,33 @@
 #  username               :string
 #
 
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do
+  before :each do
+    @michael = User.new(id: 1, username: "michael", email: "helloiammichael@hello.com", password: "passwordpassword")
+    @archer  = User.new(id: 2, username: "archer", email: "helloiamarcher@archer.com", password: "passwordpasswordpass")
+    @michael.save
+    @archer.save
 end
+
+  describe "#user" do
+    it "should initially not be following a user" do
+      expect(@michael.following?(@archer)).to be false
+    end
+    it "should be able to follow a user" do
+      @michael.follow(@archer)
+      expect(@michael.following?(@archer)).to be true
+    end
+    it "should be able to unfollow a user" do
+      @michael.follow(@archer)
+      @michael.unfollow(@archer)
+      expect(@michael.following?(@archer)).to be false
+    end
+    it "should be able to tell who their followers are" do
+      @michael.follow(@archer)
+      expect(@archer.followers.include?(@michael)).to be true
+    end
+  end
+end
+
