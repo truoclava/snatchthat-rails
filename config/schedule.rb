@@ -20,5 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every :hour do
-  runner PriceCheck.check
-end 
+  runner Price.check
+end
