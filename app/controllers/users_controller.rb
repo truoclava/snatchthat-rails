@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    
     @user = User.find(params[:id])
   end
 
@@ -9,6 +10,16 @@ class UsersController < ApplicationController
 
   def new
 
+  end
+
+  def following
+    @user = User.friendly.find(params[:id])
+    @following = @user.following
+  end
+
+  def followers
+    @user = User.friendly.find(params[:id])
+    @followers = @user.followers
   end
 
   def edit

@@ -67,6 +67,13 @@ class User < ActiveRecord::Base
     following.include?(other_user)
   end
 
+  def feed
+  
+  following_ids = "SELECT followed_id FROM relationships
+                     WHERE  follower_id = :board_id"
+  Closet.where("board_id IN (#{following_ids})OR board_id = :board_id", board_id: id)
+  end
+
   def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
       if login = conditions.delete(:login)
