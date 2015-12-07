@@ -28,7 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'annotate'
 gem 'whenever', :require => false
-
+gem 'faker'
 gem 'vacuum'
 gem 'figaro'
 gem 'friendly_id', '~> 5.1.0'

@@ -1,9 +1,9 @@
-<div id = "box">
+
 <h1><%= current_user.username%>'s Closets:</h1>
 <% @closets.each do |closet| %>
   <div class="field">
   <%= link_to closet.name, user_closet_path(current_user, closet) %>
-  </div>
+
 
 <% end %>
 
@@ -13,3 +13,8 @@
 <%= link_to "CREATE NEW CLOSET", new_user_closet_path(current_user) %>
 <br><br><br>
 <%= link_to "Search items from Amazon", searches_path %>
+<p>
+<section class="stats">
+  <%= render 'shared/stats' %>
+</section>
+</p>
