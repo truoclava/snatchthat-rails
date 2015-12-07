@@ -1,7 +1,10 @@
 <h1><%= @item.name %></h1><br>
+
+<%= image_tag @item.image_url %>
+
 <p>
   <strong>URL:</strong><%= @item.url %><br>
-  <strong>Price:</strong> <%= @item.price %><br>
+  <strong>Price:</strong> $<%= @item.price %><br>
   <strong>Source Id:</strong> <%= @item.source_id %>
 </p>
 

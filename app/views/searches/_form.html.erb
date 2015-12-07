@@ -1,0 +1,5 @@
+<%= form_tag searches_path, method: "get" do %>
+  <%= label_tag 'keyword' %>
+  <%= text_field_tag :keyword %>
+  <%= submit_tag('Search Amazon')%>
+<% end %>
