@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :items
   resources :closet_items, only: [:create, :new]
 
+  resources :relationships, only: [:create, :destroy]
+
   devise_scope :user do
     authenticated :user do
         root 'boards#index', as: :authenticated_root
