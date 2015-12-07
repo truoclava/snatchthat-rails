@@ -12,6 +12,16 @@ class UsersController < ApplicationController
 
   end
 
+  def following
+    @user = User.friendly.find(params[:id])
+    @following = @user.following
+  end
+
+  def followers
+    @user = User.friendly.find(params[:id])
+    @followers = @user.followers
+  end
+
   def edit
 
   end
