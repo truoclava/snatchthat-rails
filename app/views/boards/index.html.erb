@@ -29,7 +29,10 @@
 <br><br>
   <%@user.feed.each do |followed|%>
   <div class = "col-sm-4">
-    <p><%=followed.name%></p>
+    <p><%=followed.name%><br>
+      <%= User.find(followed.board_id).username %>
+    </p>
+    
     <br><br>
   </div>
   <%end%>
