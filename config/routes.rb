@@ -6,10 +6,15 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update] do
     resources :closets
+    member do
+      get :following, :followers
+    end
   end
 
   resources :items
   resources :closet_items, only: [:create, :new]
+
+  resources :relationships, only: [:create, :destroy]
 
   devise_scope :user do
     authenticated :user do
