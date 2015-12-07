@@ -11,27 +11,31 @@
 <%= link_to "CREATE NEW CLOSET", new_user_closet_path(current_user) %>
 
 <br><br>
-<%= link_to "Search items from Amazon", searches_path %>
+
 
 <p>
 <section class="stats">
   <%= render 'shared/stats' %>
 </section>
 </p>
-
+<%= render partial: 'searches/form.html.erb' %>
 
 </div>
 <div class = "col-sm-9">
 <center>
-  <p>
+<p>
   ---Feed---
 </p>
+<br><br>
   <%@user.feed.each do |followed|%>
+  <div class = "col-sm-4">
     <p><%=followed.name%></p>
+    <br><br>
+  </div>
   <%end%>
 
 </center>
 </div>
 
-<%= render partial: 'searches/form.html.erb' %>
+
 
