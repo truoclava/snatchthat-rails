@@ -42,6 +42,10 @@ end
       @michael.unfollow(@archer)
       expect(@michael.following?(@archer)).to be false
     end
+    it "should be able to tell who their followers are" do
+      @michael.follow(@archer)
+      expect(@archer.followers.include?(@michael)).to be true
+    end
   end
 end
 
