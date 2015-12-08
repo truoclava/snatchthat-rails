@@ -20,10 +20,12 @@
               Closet
             </a>
             <ul class="dropdown-menu" role="menu">
-              <li class="view_option" id="0"><a href="#">My Closet</a></li>
-              <li class="divider"></li>
-              <li class="view_option" id="1"><a href="#">My Second Closet</a></li>
-            </ul>
+             <li class="view_option" id="0"><%= link_to "My Board", user_boards_path(current_user.id) %></li>
+             <li class="divider"></li>
+             <% current_user.closets.each do |closet| %>
+               <li class="view_option" id="#"> <%= link_to closet.name, user_closet_path(current_user.id, closet.id) %></li>
+             <% end %>
+           </ul>
           </li>
         <% end %>
         </ul>

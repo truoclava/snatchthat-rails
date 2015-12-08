@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update] do
     resources :closets
+    resources :boards
     member do
       get :following, :followers
     end
