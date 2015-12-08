@@ -8,7 +8,7 @@
 </div>
 
 <div class="row">
-  <% @users_list.each do |user| %>
-    <%= user.username %></br>
+  <% @sample_users.each do |user| %>
+    <%= link_to user.username, user_boards_path(user.id) %></br>
   <% end %>
 </div>

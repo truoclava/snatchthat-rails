@@ -16,8 +16,6 @@ class UsersController < ApplicationController
 
   end
 
-
-
   def following
     @user = User.friendly.find(params[:id])
     @following = @user.following
@@ -25,7 +23,7 @@ class UsersController < ApplicationController
 
   def followers
     @user = User.friendly.find(params[:id])
-    @users_list = User.all
+    @sample_users = User.all.sample(10)
     @followers = @user.followers
   end
 
