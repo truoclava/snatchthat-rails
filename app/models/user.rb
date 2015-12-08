@@ -64,11 +64,11 @@ class User < ActiveRecord::Base
 
   # Returns true if the current user is following the other user.
   def following?(other_user)
-    followiling.include?(other_user)
+    following.include?(other_user)
   end
 
   def feed
-  
+
   following_ids = "SELECT followed_id FROM relationships
                      WHERE  follower_id = :board_id"
   Closet.where("board_id IN (#{following_ids})OR board_id = :board_id", board_id: id)
