@@ -4,8 +4,8 @@
   <%= div_for activity do %>
 
     <%= link_to activity.user.username, activity.user %>
-
-    <%=activity.trackable%>
     
+    created the closet:  <%=activity.trackable.name%>
+   
   <% end %>
 <% end %>
