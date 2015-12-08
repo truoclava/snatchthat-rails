@@ -12,4 +12,5 @@ class Search < ActiveRecord::Base
 
   end
 
+
 end

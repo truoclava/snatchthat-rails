@@ -1,0 +1,18 @@
+<h2>Hidefy Data</h1>
+  <%=@data_hash.each do |item| %>
+  <ul>
+    <li> Product id:
+    <%= item["id"]%>
+    </li>
+    <li> Product name:
+    <%= item["name"]%>
+    </li>
+    <li> Department name:
+    <%= item["department_name"]%>
+    </li>
+    <li> Price:
+    $<%= item["price"]%>
+    </li>
+  </ul>
+  <br>
+  <%end%>

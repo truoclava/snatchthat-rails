@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every :hour do
-  runner Price.check
-end
+# every :hour do
+#   runner Price.check
+# end

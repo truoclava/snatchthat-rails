@@ -21,4 +21,13 @@ class SearchesController < ApplicationController
     @item_asins = item_asins
 
   end
+
+  def hidefy
+    @all_hidefy = Adapters::HidefyConnection.new.query
+    @data_hash = @all_hidefy["items"]
+    # binding.pry
+    render partial: 'hidefy'
+  end
+
+
 end

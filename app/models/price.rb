@@ -17,9 +17,10 @@ class Price < ActiveRecord::Base
     end
   end
 
-  # if current_price != item.price
-    #notify user
-    #
+  def self.test_check
+    Item.all.each do |item|
 
+
+  end
 
 end
