@@ -1,24 +1,19 @@
 class ClosetItemsController < ApplicationController
-  def create
-    # binding.pry
-    # @closet = Closet.find_by
+  def new
   end
 
-  def new
-    @closet_item = ClosetItem.new(closet_item_params)
-    @closet_item.save
-    @closet = Closet.find(closet_item_params[:closet_id])
+  def create
+  end
 
-    redirect_to user_closet_path(current_user ,@closet)
+  def destroy
+    @closet_item = ClosetItem.find(params[:id])
+    @closet_item.destroy
+    redirect_to user_closet_path(current_user, @closet_item.closet_id)
   end
 
 
 private
-
-def closet_item_params
-    # binding.pry
-    # closet_id = params[:closet_id]
+  def closet_item_params
     params.permit(:closet_id, :item_id)
-    # params.require(:closet_item).permit(:closet_id, :item_id, controller: :closet_item)
   end
 end

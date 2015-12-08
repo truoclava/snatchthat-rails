@@ -1,9 +1,13 @@
-<%= render 'form' %>
-
+<h2>Search Results For: <%= @keyword %></h2>
 <% @item_asins.each do |item_asin| %>
   <%= form_tag new_item_path, method: "get" do %>
     <%= item_asin %>
     <%= hidden_field_tag 'item[source_id]', item_asin %>
+    <%= hidden_field_tag 'item[source_type]', "Amazon" %>
     <%= submit_tag('Add Item to Closet')%>
   <% end %>
 <% end %>
+
+<br>
+<h3>New Search</h3>
+<%= render 'form' %>

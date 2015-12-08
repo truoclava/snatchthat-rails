@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :items
-  resources :closet_items, only: [:create, :new]
+  resources :closet_items, only: [:create, :new, :destroy]
 
   resources :relationships, only: [:create, :destroy]
 

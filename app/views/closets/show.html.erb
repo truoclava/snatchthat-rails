@@ -7,13 +7,13 @@
   ''text-decoration: none;', :class => "butt"} %></h1>
   </div>
 
-
 <% @closet.items.each do |item| %>
  <div class = "col-md-4" style = "height:200px; width:200px;">
-  Item: <%= link_to item.name, item_path(item) %><br>
-  Url: <%= item.url %><br>
-  Price: $<%= item.price %><br>
-  ASIN: <%= item.source_id %>
+  <%= link_to item.name, item_path(item) %><br>
+  <%= image_tag item.image_url %><br>
+  <strong>Price: </strong><%= item.price %><br>
+  ASIN: <%= item.source_id %><br>
+  <%= link_to 'Delete', closet_item_path, method: :delete %><br>
  </div>
 <% end %>
 

@@ -7,7 +7,7 @@ module Adapters
 
     def amazon_search(keyword)
       hashed_results = results(keyword)
-      items = hashed_results["ItemSearchResponse"]["Items"]["Item"]
+      hashed_results["ItemSearchResponse"]["Items"]["Item"]
     end
 
     def results(keyword)
