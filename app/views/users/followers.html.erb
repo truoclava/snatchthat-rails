@@ -6,3 +6,9 @@
 </p>
 <% end %>
 </div>
+
+<div class="row">
+  <% @users_list.each do |user| %>
+    <%= user.username %></br>
+  <% end %>
+</div>

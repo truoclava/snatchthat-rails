@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def followers
     @user = User.friendly.find(params[:id])
+    @users_list = User.all
     @followers = @user.followers
   end
 
