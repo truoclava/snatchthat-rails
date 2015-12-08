@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.amazon_info
     @item.save
-
+    track_activity(@item)
     closet_ids = params[:closet_ids][0]
     closet = Closet.find(closet_ids)
     redirect_to new_closet_item_path(item_id: @item.id, closet_id: closet_ids.first)

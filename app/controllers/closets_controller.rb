@@ -11,6 +11,7 @@ class ClosetsController < ApplicationController
   def create
     @closet = Closet.new(closet_params)
     @closet.save
+    track_activity(@closet)
     redirect_to '/'
   end
 
