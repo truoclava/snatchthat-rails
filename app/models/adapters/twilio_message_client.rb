@@ -16,7 +16,7 @@ module Adapters
     def send_message(price_dif, item_instance)
       good_bad_news = comment_creater(price_dif, item_instance)
       #this phone_number is supposed to be item.user.phone_number
-      phone_number = '+12016212617'
+      phone_number = "+#{item_instance.phone_number}"
 
       message = connection.client.account.messages.create(
         :from => connection.twilio_number,

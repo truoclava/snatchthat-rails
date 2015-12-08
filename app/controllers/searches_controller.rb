@@ -2,6 +2,7 @@ class SearchesController < ApplicationController
 
   def index
     keyword = params[:keyword]
+    source_type = params["source_type"]
 
     rename = Adapters::AmazonConnection.new
     client = rename.connection
@@ -23,11 +24,8 @@ class SearchesController < ApplicationController
   end
 
   def hidefy
-    @all_hidefy = Adapters::HidefyConnection.new.query
-    @data_hash = @all_hidefy["items"]
-    # binding.pry
+    @data_hash = Adapters::HidefyConnection.new.query("items")["items"]
     render partial: 'hidefy'
   end
-
 
 end

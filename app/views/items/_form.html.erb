@@ -2,6 +2,8 @@
   <div class="field">
     <%= f.label :source_id %><br>
     <%= f.text_field :source_id, :value => @item.source_id %><br>
+    <%= hidden_field_tag 'item[source_type]', @item.source_type %>
+    <%= hidden_field_tag 'item[price]', @item.price %>
   </div>
   <%= label_tag :closets %><br>
   <% current_user.closets.each do |closet| %>

@@ -8,8 +8,8 @@ module Adapters
       @connection = self.class
     end
 
-    def query
-        results = connection.get('http://snatchthat-rails-api.herokuapp.com/api/items')
+    def query(end_path)
+        results = connection.get('http://snatchthat-rails-api.herokuapp.com/api/' + end_path)
     end
 
   end
