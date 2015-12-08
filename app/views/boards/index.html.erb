@@ -1,5 +1,8 @@
+ 
 <div class = "col-sm-3">
+<p class = "text-muted">Welcome <%=current_user.username%>!</p>
 <a href = "#">My Closets</a> | <a href = "#">My Feed</a> <!-- (make into links with ajax) --> | <%= link_to "Friends", followers_user_path(current_user.username) %>
+
 <h3>Your Closets:</h3>
 <% @closets.each do |closet| %>
   <div class="field">
