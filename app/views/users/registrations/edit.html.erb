@@ -20,8 +20,9 @@
 
   <div class="field">
     <%= f.label :notifications %><br />
-    <%= f.text_field :notifications %>
+    <%= f.check_box :notifications, {}, 'true', 'false' %>
   </div>
+
 
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
