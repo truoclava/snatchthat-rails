@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def followers
     @user = User.friendly.find(params[:id])
-    @sample_users = User.all.sample(10)
+    # @sample_users = User.all.sample(10)
     @followers = @user.followers
   end
 
