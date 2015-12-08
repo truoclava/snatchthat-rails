@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   # has_many :followers, through: :passive_relationships, source: :follower
   has_many :followers, through: :passive_relationships
+  has_many :activities
 
   attr_accessor :login
 
@@ -71,7 +72,7 @@ class User < ActiveRecord::Base
   
   following_ids = "SELECT followed_id FROM relationships
                      WHERE  follower_id = :board_id"
-  Closet.where("board_id IN (#{following_ids})OR board_id = :board_id", board_id: id)
+  Closet.where("board_id IN (#{following_ids})", board_id: id)
   end
 
   def self.find_for_database_authentication(warden_conditions)
