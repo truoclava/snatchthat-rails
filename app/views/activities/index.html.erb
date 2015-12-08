@@ -2,7 +2,10 @@
 
 <% @activities.each do |activity| %>
   <%= div_for activity do %>
+
     <%= link_to activity.user.username, activity.user %>
 
+    <%=activity.trackable%>
+    
   <% end %>
 <% end %>
