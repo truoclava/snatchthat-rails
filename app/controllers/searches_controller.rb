@@ -11,6 +11,7 @@ class SearchesController < ApplicationController
     end
 
     @item_asins = item_asins
+    @keyword = keyword
 
   end
 end

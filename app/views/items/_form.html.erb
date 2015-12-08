@@ -2,14 +2,14 @@
   <div class="field">
     <%= f.label :source_id, 'Source ID (TEST W/ B00B2L7DY2)' %><br>
     <%= f.text_field :source_id, :value => @item.source_id %><br>
-  </div>
+  </div><br>
   <div class="field">
     <%= label_tag :closets %><br>
     <% current_user.closets.each do |closet| %>
       <%= check_box_tag 'closet_ids[]', closet.id -%>
-      <%= closet.name -%>
+      <%= closet.name -%><br>
     <% end %>
-  </div>
+  </div><br>
   <div class="actions">
     <%= f.submit %>
   </div>

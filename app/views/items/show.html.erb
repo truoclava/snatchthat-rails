@@ -1,16 +1,12 @@
-<h1><%= @item.name %></h1><br>
+<h2><%= @item.name %></h2><br>
 
-<%= image_tag @item.image_url %>
-
-<p>
-  <strong>URL:</strong><%= @item.url %><br>
-  <strong>Price:</strong> $<%= @item.price %><br>
-  <strong>Source Id:</strong> <%= @item.source_id %>
-</p>
-
+<%= image_tag @item.image_url %><br>
+<strong>Price: </strong><%= @item.price %><br>
+<strong>Source ID:</strong> <%= @item.source_id %><br>
+<%= link_to 'Buy on Amazon', @item.url, target: "_blank" %>
 
 <br><br>
 <h3>Closets:</h3>
 <% @item.closets.each do |closet| %>
-  <br><li><%= link_to closet.name, user_closet_path(current_user, closet) %></li>
+  <%= link_to closet.name, user_closet_path(current_user, closet) %><br>
 <% end %>
