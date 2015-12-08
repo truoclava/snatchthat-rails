@@ -10,8 +10,6 @@
 <br><br><br>
 <%= link_to "CREATE NEW CLOSET", new_user_closet_path(current_user) %>
 
-<br><br>
-
 
 <p>
 <section class="stats">
@@ -19,6 +17,13 @@
 </section>
 </p>
 <%= render partial: 'searches/form.html.erb' %>
+
+<br><br>
+
+<%= link_to "Hidefy search", :controller => :searches, :action => :hidefy %>
+<br><br>
+
+
 
 </div>
 <div class = "col-sm-9">

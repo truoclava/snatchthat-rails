@@ -16,10 +16,13 @@ class Item < ActiveRecord::Base
   has_many :closets, through: :closet_items
   has_many :prices
 
+<<<<<<< HEAD
   # has_many :activities, as: :trackable
   # def get_asin
   #   self.source_id = self.url.match("/([a-zA-Z0-9]{10})(?:[/?]|$)")[1]
   # end
+=======
+>>>>>>> price_check
 
   def client
     rename = Adapters::AmazonConnection.new
@@ -47,5 +50,18 @@ class Item < ActiveRecord::Base
     self.price = get_current_price
     self.image_url = response['ItemLookupResponse']['Items']['Item']['MediumImage']['URL']
   end
+
+
+  def get_hidefy_price(end_path)
+    hidefy_item_data = Adapters::HidefyConnection.new.query(end_path)
+    current_price = hidefy_item_data["price"]
+  end
+
+  def hidefy_create(item_id)
+    current_price = get_hidefy_price("items/#{item_id}")
+    new_price = Price.new(price: current_price)
+    self.prices << new_price
+  end
+
 
 end

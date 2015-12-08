@@ -2,7 +2,7 @@ module Adapters
   class TwilioConnection
     include HTTParty
 
-    attr_reader :connection, :client, :twilio_number
+    attr_reader :client, :twilio_number
 
     def initialize
       @client = Twilio::REST::Client.new(ENV["twilio_sid"], ENV["twilio_auth_token"])
