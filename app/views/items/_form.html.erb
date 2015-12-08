@@ -1,13 +1,15 @@
 <%= form_for :item, url: {action: 'create'} do |f|%>
   <div class="field">
-    <%= f.label :source_id %><br>
+    <%= f.label :source_id, 'Source ID (TEST W/ B00B2L7DY2)' %><br>
     <%= f.text_field :source_id, :value => @item.source_id %><br>
   </div>
-  <%= label_tag :closets %><br>
-  <% current_user.closets.each do |closet| %>
-    <%= check_box_tag 'closet_ids[]', closet.id -%>
-    <%= closet.name -%>
-  <% end %>
+  <div class="field">
+    <%= label_tag :closets %><br>
+    <% current_user.closets.each do |closet| %>
+      <%= check_box_tag 'closet_ids[]', closet.id -%>
+      <%= closet.name -%>
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

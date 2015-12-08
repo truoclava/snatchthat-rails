@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20151207223301) do
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
-    t.integer  "price"
+    t.string   "price"
     t.string   "source_id"
     t.string   "image_url"
     t.datetime "created_at", null: false
