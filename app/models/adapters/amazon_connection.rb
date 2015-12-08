@@ -11,10 +11,6 @@ module Adapters
         associate_tag: 'tag'
       )
     end
-    # def query(query: {})
-    #   results = @connection.item_lookup(query: query)
-    #   results.to_h
-    # end
 
 
   end
