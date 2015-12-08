@@ -8,14 +8,7 @@ module Adapters
       @connection = Vacuum.new('US').configure(
         aws_access_key_id: ENV['aws_access_key_id'],
         aws_secret_access_key: ENV['aws_secret_access_key'],
-        associate_tag: 'tag'
-      )
+        associate_tag: 'tag')
     end
-    # def query(query: {})
-    #   results = @connection.item_lookup(query: query)
-    #   results.to_h
-    # end
-
-
   end
 end

@@ -11,11 +11,17 @@ class Price < ActiveRecord::Base
 
       if current_price != item.price
         price_dif = item.price - current_price
-        # item.update_item
-        Adapters::TwilioMessageClient.new.send_message(price_dif, item)
-      else
-        # item.update_item
+        if current_user.notifications == true
+          Adapters::TwilioMessageClient.new.send_message(price_dif, item)
+        end
       end
+        # item.update_item
     end
   end
+
+  # if current_price != item.price
+    #notify user
+    #
+
+
 end

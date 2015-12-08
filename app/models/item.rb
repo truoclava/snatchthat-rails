@@ -48,5 +48,4 @@ class Item < ActiveRecord::Base
     self.image_url = response['ItemLookupResponse']['Items']['Item']['MediumImage']['URL']
   end
 
-
 end

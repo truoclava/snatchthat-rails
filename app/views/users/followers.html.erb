@@ -6,3 +6,9 @@
 </p>
 <% end %>
 </div>
+
+<div class="row">
+  <% @sample_users.each do |user| %>
+    <%= link_to user.username, user_boards_path(user.id) %></br>
+  <% end %>
+</div>

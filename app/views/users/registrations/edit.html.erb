@@ -8,6 +8,16 @@
     <%= f.text_field :username %>
   </div>
 
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
@@ -26,6 +36,11 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
+
+  <div class="field">
+    <%= f.label :notifications %><br />
+    <%= f.check_box :notifications, {}, 'true', 'false' %>
+  </div><br>
 
   <div class="actions">
     <%= f.submit "Update" %>

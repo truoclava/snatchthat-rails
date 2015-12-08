@@ -1,5 +1,5 @@
 <div class = "col-sm-3">
-<a href = "#">My Closets</a> | <a href = "#">My Feed</a> <!-- (make into links with ajax) -->
+<a href = "#">My Closets</a> | <a href = "#">My Feed</a> <!-- (make into links with ajax) --> | <%= link_to "Friends", followers_user_path(current_user.username) %>
 <h3>Your Closets:</h3>
 <% @closets.each do |closet| %>
   <div class="field">
@@ -32,7 +32,7 @@
     <p><h4><%=followed.name%></h4>
       <h6>By:<a href = "/users/<%=User.find(followed.board_id).slug%>"> <%= User.find(followed.board_id).username %></h6></a>
     </p>
-    
+
     <br><br>
   </div>
   <%end%>
