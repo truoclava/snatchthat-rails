@@ -1,39 +1,38 @@
 <div class="col-sm-3">
   <!-- <p class="text-muted">Welcome, <%=current_user.username.capitalize%>!</p> -->
+  <h3>My Closets</h3><hr>
+  <table class="table table-striped table-hover">
+    <thead>
+      <th>#</th>
+      <th>Closet Name</th>
+    </thead>
+    <tbody>
+  <% @closets.each do |closet| %>
+    <div class="field">
+      <tr>
+        <td><%= closet.id %></td>
+        <td><%= link_to closet.name, user_closet_path(current_user, closet) %></td>
+      </tr>
+    </div>
+  <% end %>
+    </tbody>
+  </table>
+  <br>
+  <hr>
+
+  <%= link_to "CREATE NEW CLOSET", new_user_closet_path(current_user) %>
+  <br><br>
+  <p>
+  <section class="stats">
+    <%= render 'shared/stats' %>
+  </section>
+  </p>
+
+  <br>
+  <%= link_to "HIDEFY SEARCH", :controller => :searches, :action => :hidefy %><br><br><br>
   <center>
-    <a href = "#">My Closets</a> | <a href = "#">My Feed</a> <!-- (make into links with ajax) --> | <%= link_to "Trending", followers_user_path(current_user.username) %>
+    <a href = "/users/<%= current_user.slug %>">My Profile</a> | <%= link_to "Recent Activity", following_user_path(current_user.slug) %> | <%= link_to "Trending", followers_user_path(current_user.username) %>
   </center>
-<h3>Your Closets:</h3>
-<table class="table table-striped table-hover">
-  <thead>
-    <th>#</th>
-    <th>Table Name</th>
-  </thead>
-  <tbody>
-<% @closets.each do |closet| %>
-  <div class="field">
-    <tr>
-      <td><%= closet.id %></td>
-      <td><%= link_to closet.name, user_closet_path(current_user, closet) %></td>
-    </tr>
-  </div>
-<% end %>
-  </tbody>
-</table>
-<br>
-<hr>
-
-<%= link_to "CREATE NEW CLOSET", new_user_closet_path(current_user) %>
-<br><br>
-<p>
-<section class="stats">
-  <%= render 'shared/stats' %>
-</section>
-</p>
-
-<br>
-<%= link_to "HIDEFY SEARCH", :controller => :searches, :action => :hidefy %>
-
 </div>
 
 <div class = "col-sm-9">

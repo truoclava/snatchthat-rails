@@ -4,7 +4,7 @@
     It's free and always will be.
   </p>
   <hr>
-  
+
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
@@ -18,17 +18,15 @@
 
     <div class="field">
       <%= f.text_field :phone_number, :placeholder => 'Phone Number', class: "form-control", id: "inputDefault", style: "width: 300px;"%>
-    </div>
-
-    <div class="field">
-      <%= f.label :password, class: "control-label", for: "inputDefault"  %>
-      <%= f.password_field :password, :placeholder => 'Password', class: "form-control", id: "inputDefault", style: "width: 300px;"  %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, :placeholder => 'Confirm Password', class: "form-control", id: "inputDefault", style: "width: 300px;" %>
     </div><br>
+
+    <div class="field">
+      <%= f.password_field :password, :placeholder => 'Password', class: "form-control", id: "inputDefault", style: "width: 300px;"  %>
+    </div><br>
+
+    <div class="field">
+      <%= f.password_field :password_confirmation, :placeholder => 'Confirm Password', class: "form-control", id: "inputDefault", style: "width: 300px;" %>
+    </div><br><hr>
 
     <div class="actions">
       <%= f.submit "Sign Up", class: "btn btn-default" %>
