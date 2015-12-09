@@ -13,10 +13,7 @@
   <%= link_to item.name, item_path(item) %><br>
   <%= image_tag item.image_url %><br>
   <strong>Price: </strong>
-  <%= item.prices.last.price %>
-      <li>
-      <h4><%= item.prices.count%></h4>
-      </li>
+  <%= item.price %>
 
   ASIN: <%= item.source_id %><br>
   <%= link_to 'Delete', closet_item_path, method: :delete %><br>

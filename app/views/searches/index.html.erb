@@ -1,7 +1,7 @@
 <h2>Search Results From <%= @source_type %> For: <%= @keyword %></h2>
 
 <% @results.each do |result| %>
-  <%= form_tag create_item_path, method: 'get' do %>
+  <%= form_tag '/items' do %>
   <ul>
     <li> Source Id:
     <%= result["source_id"]%>
