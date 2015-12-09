@@ -15,17 +15,22 @@ class ItemsController < ApplicationController
     if params[:item][:source_type] == "Amazon"
       client = Adapters::AmazonItemClient.new
       item = client.create_from_source_id(params[:item][:source_id])
+      @item = client.create_from_source_id(params[:item][:source_id])
       item.source_id = "Amazon"
       item.save
+
     else
       item = Item.new(item_params)
       item.hidefy_create(item.source_id)
       item.save
+      
     end
 
     closet_ids = params[:closet_ids]
     closet_ids.each do |closet_id|
       ClosetItem.create(closet_id: closet_id, item_id: item.id)
+      @closetitem = ClosetItem.find_by(closet_id: closet_id, item_id: item.id)
+      track_activity(@closetitem)
     end
 
     redirect_to '/'
