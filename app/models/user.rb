@@ -70,10 +70,9 @@ class User < ActiveRecord::Base
   end
 
   def feed
-
-  following_ids = "SELECT followed_id FROM relationships
-                     WHERE  follower_id = :board_id"
-  Closet.where("board_id IN (#{following_ids})", board_id: id)
+    following_ids = "SELECT followed_id FROM relationships
+                       WHERE  follower_id = :board_id"
+    Closet.where("board_id IN (#{following_ids})", board_id: id)
   end
 
   def self.find_for_database_authentication(warden_conditions)
@@ -95,8 +94,6 @@ class User < ActiveRecord::Base
       errors.add(:username, :invalid)
     end
   end
-
-
 
   private
   def create_board
