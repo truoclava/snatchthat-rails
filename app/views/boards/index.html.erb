@@ -80,7 +80,8 @@
       <div class = "col-sm-4">
         <p>
         <br>
-          <h4><%=followed.name%></h4>
+          <%= image_tag ('closet') %>
+          <h4><%=followed.name%></h4
           <h6>By:<a href = "/users/<%=User.find(followed.board_id).slug%>"> <%= User.find(followed.board_id).username %></h6></a>
         </p>
       <br><br>

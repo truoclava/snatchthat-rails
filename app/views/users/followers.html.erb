@@ -3,9 +3,8 @@
   <hr>
   <div class="row">
   <% @followers.each do |follower| %>
-  <p>
-   <div class="col-xs-3"><a href = "/users/<%=follower.slug%>"><%= follower.username %></a></div>
-  </p>
+  <h4><center><div class="col-xs-3"><a href = "/users/<%=follower.slug%>"><%= follower.username %>
+  <%= image_tag ('UGM-default-user') %></div></center></h4>
   <% end %>
   </div>
 </div>
