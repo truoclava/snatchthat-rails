@@ -1,26 +1,5 @@
-<h2>Hidefy Data</h1>
-  <%=@data_hash.each do |item| %>
-  <%= form_tag new_item_path, method: "get" do %>
-  <ul>
-    <li> Product id:
-    <%= item["id"]%>
-    <%= hidden_field_tag 'item[source_id]', item["id"] %>
-    </li>
-    <li> Product name:
-    <%= item["name"]%>
-    <%= hidden_field_tag 'item[name]', item["name"] %>
-    </li>
-    <li> Department name:
-    <%= item["department_name"]%>
-    <%= hidden_field_tag 'item[department_name]', item["department_name"] %>
-    </li>
-    <li> Price:
-    $<%= item["price"]%>
-    <%= hidden_field_tag 'item[price]', item["price"] %>
-    </li>
-  </ul>
-  <br>
-  <%= hidden_field_tag 'item[source_type]', "Hidefy" %>
-  <%= submit_tag('Add Item to Closet')%>
-  <%end%>
-<%end%>
+<%= form_tag searches_path, method: "get" do %>
+  <%= text_field_tag :keyword, 'Hidefy', class: "form-control", id: "inputDefault", style: "width: 250px;" %>
+  <%= hidden_field_tag 'item[source_type]', 'Hidefy', class: "form-control", id: "inputDefault", style: "width: 250px;" %><br>
+  <%= submit_tag 'Search Hidefy', class: 'btn btn-default'%>
+<% end %>

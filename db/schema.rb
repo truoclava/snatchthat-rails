@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20151208190557) do
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
-    t.string   "price"
     t.string   "source_id"
     t.string   "source_type"
     t.string   "image_url"
@@ -73,7 +72,7 @@ ActiveRecord::Schema.define(version: 20151208190557) do
   end
 
   create_table "prices", force: :cascade do |t|
-    t.integer  "price"
+    t.string   "price"
     t.integer  "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -106,11 +105,7 @@ ActiveRecord::Schema.define(version: 20151208190557) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-<<<<<<< HEAD
-    t.integer  "phone_number"
-=======
     t.string   "phone_number"
->>>>>>> 836dc3b600a4c561f1f17b0f6ade752a9826486a
     t.boolean  "notifications",          default: true
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false

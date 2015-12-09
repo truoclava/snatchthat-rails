@@ -1,19 +1,17 @@
 <div class="col-sm-3">
   <!-- <p class="text-muted">Welcome, <%=current_user.username.capitalize%>!</p> -->
-  
-   <h6> <a href = "/users/<%= current_user.slug %>">My Profile</a> | <%= link_to "Recent Activity", following_user_path(current_user.slug) %> | <%= link_to "Trending", followers_user_path(current_user.username) %></h6>
 
   <h3>My Closets</h3><hr>
   <table class="table table-striped table-hover">
     <thead>
-      
+
       <th>Closet Name</th>
     </thead>
     <tbody>
   <% @closets.each do |closet| %>
     <div class="field">
       <tr>
-        
+
         <td><%= link_to closet.name, user_closet_path(current_user, closet) %></td>
       </tr>
     </div>
@@ -29,11 +27,8 @@
   <section class="stats">
     <%= render 'shared/stats' %>
   </section>
-  </p>
-
-  <br>
-  <%= link_to "HIDEFY SEARCH", :controller => :searches, :action => :hidefy %><br><br><br>
-  
+</p><br>
+  <a href = "/users/<%= current_user.slug %>">My Profile</a> | <%= link_to "Recent Activity", following_user_path(current_user.slug) %> | <%= link_to "Trending", followers_user_path(current_user.username) %>
 </div>
 
 <div class = "col-sm-9">
@@ -50,7 +45,7 @@
     <%@user.activity_feed.each do |activity|%>
 
     <br>
-    
+
     <% if current_user.username == activity.user.username %>
     You
     <%else%>
@@ -60,7 +55,7 @@
       <em class = "text-muted">created closet </em> <%=activity.trackable.name%>
 
       <% elsif activity.trackable.class == Closet && activity.action == "destroy"%>
-      <em class = "text-muted">deleted closet </em> <%=activity.trackable.name%> 
+      <em class = "text-muted">deleted closet </em> <%=activity.trackable.name%>
 
       <% elsif activity.trackable.class == ClosetItem && activity.action == "create"%>
     <em class = "text-muted">added</em> item <%= Item.find(activity.trackable.item_id).name %> <em class = "text-muted">to</em> <%= Closet.find(activity.trackable.closet_id).name %>
@@ -85,7 +80,8 @@
       <div class = "col-sm-4">
         <p>
         <br>
-          <h4><%=followed.name%></h4>
+          <%= image_tag ('closet') %>
+          <h4><%=followed.name%></h4
           <h6>By:<a href = "/users/<%=User.find(followed.board_id).slug%>"> <%= User.find(followed.board_id).username %></h6></a>
         </p>
       <br><br>

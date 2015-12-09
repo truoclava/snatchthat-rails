@@ -1,10 +1,10 @@
 <div class="col-sm-3">
   <h2><%= @item.name %></h2><br>
 
-  <%= image_tag @item.image_url %><br>
-  <strong>Price: </strong><%= @item.price %><br>
-  <strong>Source ID:</strong> <%= @item.source_id %><br>
-  <%= link_to 'Buy on Amazon', @item.url, target: "_blank" %>
+<%= image_tag @item.image_url %><br>
+<strong>Price: </strong><%= @item.prices.last.price %><br>
+<strong>Source ID:</strong> <%= @item.source_id %><br>
+<%= link_to 'Buy on Amazon', @item.url, target: "_blank" %>
 
   <br><br>
   <h3>Closets:</h3>
@@ -14,6 +14,7 @@
 </div>
 
 <div class="col-sm-9">
-  <h2>SVG – Price over Time</h2>
+  <h2>Price</h2>
   <!-- graph will go here -->
+  <%= image_tag ('price-over-time') %>
 </div>

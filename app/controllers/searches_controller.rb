@@ -2,23 +2,12 @@ class SearchesController < ApplicationController
 
   def index
     keyword = params[:keyword]
-    source_type = params["source_type"]
+    source_type = params[:item][:source_type]
 
-    client = Adapters::AmazonSearchClient.new
-    results = client.amazon_search(keyword)
-    item_asins = []
-    results.each do |item|
-      item_asins << item["ASIN"]
-    end
-
-    @item_asins = item_asins
+    @results = Search.create_results_hash(keyword, source_type)
     @keyword = keyword
+    @source_type = source_type
 
-  end
-
-  def hidefy
-    @data_hash = Adapters::HidefyConnection.new.query("items")["items"]
-    render partial: 'hidefy'
   end
 
 end

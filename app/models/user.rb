@@ -71,9 +71,9 @@ class User < ActiveRecord::Base
   end
 
   def feed
-  following_ids = "SELECT followed_id FROM relationships
-                   WHERE  follower_id = :board_id"
-  Closet.where("board_id IN (#{following_ids})", board_id: id)
+    following_ids = "SELECT followed_id FROM relationships
+                       WHERE  follower_id = :board_id"
+    Closet.where("board_id IN (#{following_ids})", board_id: id)
   end
 
   def activity_feed
@@ -103,7 +103,6 @@ class User < ActiveRecord::Base
   def notifications?
     User.find_by(id: current_user.id).notifications
   end
-
 
   private
   def create_board

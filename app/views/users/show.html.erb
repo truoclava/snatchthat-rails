@@ -1,7 +1,7 @@
 <div class = "col-sm-3">
 <h1><%=@user.username.capitalize%></h1>
-<br>
-<%= image_tag ("Kjartan"), size: "200x200" %><br><br>
+<%= image_tag ('UGM-default-user') %>
+<br><br>
 <section class="stats">
   <%= render 'shared/stats' %>
 </section>
@@ -20,6 +20,11 @@
     <%@user.closets.each do |closet|%>
     <div class = "col-sm-4">
       <p><%=closet.name%></p>
+      <p>
+        <% closet.items.each do |item| %>
+        <%= image_tag item.image_url %>
+        <% end %>
+      </p>
       <br><br>
     </div>
     <%end%>
