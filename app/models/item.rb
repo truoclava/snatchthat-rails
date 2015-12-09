@@ -29,5 +29,9 @@ class Item < ActiveRecord::Base
     self.prices << new_price
   end
 
+  def how_many_users_have_this
+    self.closets.length
+  end
+
 
 end

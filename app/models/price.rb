@@ -19,7 +19,7 @@ class Price < ActiveRecord::Base
       else
         current_price = item.get_hidefy_price("items/#{item.source_id}")
         price_dif = item.price - current_price
-        if price_dif != 0
+        if price_dif != 0 && current_user.notifications?
           Adapters::TwilioMessageClient.new.send_message(price_dif, item)
         end
       end
