@@ -45,7 +45,12 @@
     <%@user.activity_feed.each do |activity|%>
 
     <br>
+    
+    <% if current_user.username == activity.user.username %>
+    You
+    <%else%>
    <%= link_to activity.user.username, activity.user %>
+   <% end %>
       <% if activity.trackable.class == Closet && activity.action == "create" %>
       <em class = "text-muted">created closet </em> <%=activity.trackable.name%>
 
