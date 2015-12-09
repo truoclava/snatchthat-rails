@@ -28,21 +28,54 @@
 
 
 </div>
+
 <div class = "col-sm-9">
-<center>
-<p>
-  ---Feed---
-</p>
-<br><br>
-  <%@user.feed.each do |followed|%>
-  <div class = "col-sm-4">
-    <p><h4><%=followed.name%></h4>
-      <h6>By:<a href = "/users/<%=User.find(followed.board_id).slug%>"> <%= User.find(followed.board_id).username %></h6></a>
-    </p>
+ <ul class="nav nav-tabs">
+  <li class="active"><a href="#home" data-toggle="tab">My Feed</a></li>
+  <li><a href="#profile" data-toggle="tab">Closet Feed</a></li>
+  
+</ul>
+<div id="myTabContent" class="tab-content">
 
-    <br><br>
+  <div class="tab-pane fade active in" id="home">
+    
+    <%@user.activity_feed.each do |activity|%>
+
+    <br>
+   <%= link_to activity.user.username, activity.user %>
+    <% if activity.trackable.class == Closet && activity.action == "create" %>
+    <em class = "text-muted">created closet </em> <%=activity.trackable.name%>
+
+    <% elsif activity.trackable.class == Closet && activity.action == "destroy"%>
+    <em class = "text-muted">deleted closet </em> <%=activity.trackable.name%> 
+
+    <% elsif activity.trackable.class == ClosetItem && activity.action == "create"%>
+    <em class = "text-muted">added</em> item
+
+    <% elsif activity.trackable_type == "ClosetItem" && activity.action == "destroy"%>
+    <em class = "text-muted">deleted</em> item 
+
+    <% elsif activity.trackable.class == User && activity.action == "create"%>
+    <em class = "text-muted">followed</em> <%= activity.trackable.username %>
+
+    <% elsif activity.trackable.class == User && activity.action == "destroy"%>
+    <em class = "text-muted">unfollowed</em> <%= activity.trackable.username %> 
+    <%end%>
+    <%end%>
   </div>
-  <%end%>
 
-</center>
+  <div class="tab-pane fade" id="profile">
+    <%@user.feed.each do |followed|%>
+      <div class = "col-sm-4">
+        <p>
+        <br>
+          <h4><%=followed.name%></h4>
+          <h6>By:<a href = "/users/<%=User.find(followed.board_id).slug%>"> <%= User.find(followed.board_id).username %></h6></a>
+        </p>
+      <br><br>
+      </div>
+    <%end%>
+  </div>
+
+
 </div>
