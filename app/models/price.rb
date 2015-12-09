@@ -16,19 +16,20 @@ class Price < ActiveRecord::Base
   #   end
   # end
   #
-  # def self.test_check
-  #   Item.all.each do |item|
-  #     if item.source_type == "Amazon"
-  #       current_price = item.get_amazon_price
-  #     else
-  #       current_price = item.get_hidefy_price("items/#{item.source_id}")
-  #       price_dif = item.price - current_price
-  #       if current_user.notifications == true
-  #         Adapters::TwilioMessageClient.new.send_message(price_dif, item)
-  #       end
-  #     end
-  #     new_price = Price.new(price: current_price)
-  #     item.prices << new_price
-  # end
+  def self.test_check
+    Item.all.each do |item|
+      if item.source_type == "Amazon"
+        current_price = item.get_amazon_price
+      else
+        current_price = item.get_hidefy_price("items/#{item.source_id}")
+        price_dif = item.price - current_price
+        if current_user.notifications == true
+          Adapters::TwilioMessageClient.new.send_message(price_dif, item)
+        end
+      end
+      new_price = Price.new(price: current_price)
+      item.prices << new_price
+    end
+  end
 
 end
