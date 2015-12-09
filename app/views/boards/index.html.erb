@@ -1,48 +1,28 @@
- 
 <div class = "col-sm-3">
-<p class = "text-muted">Welcome <%=current_user.username%>!</p>
-<a href = "#">My Closets</a> | <a href = "#">My Feed</a> <!-- (make into links with ajax) --> | <%= link_to "Friends", followers_user_path(current_user.username) %>
+  <p class = "text-muted">Welcome <%=current_user.username%>!</p>
+  <a href = "#">My Closets</a> | <a href = "#">My Feed</a> <!-- (make into links with ajax) -->
 
-<h3>Your Closets:</h3>
-<% @closets.each do |closet| %>
-  <div class="field">
-  <%= link_to closet.name, user_closet_path(current_user, closet) %>
-  </div>
-<% end %>
-
-<br><br><br>
-<%= link_to "CREATE NEW CLOSET", new_user_closet_path(current_user) %>
-
-
-<p>
-<section class="stats">
-  <%= render 'shared/stats' %>
-</section>
-</p>
-
-<br><br>
-
-<%= link_to "Hidefy search", :controller => :searches, :action => :hidefy %>
-<br><br>
-
-
-
+  <h3>Your Closets:</h3>
+  <% @closets.each do |closet| %>
+    <div class="field">
+      <%= link_to closet.name, user_closet_path(current_user, closet) %>
+    </div>
+  <% end %>
+  <br><br><br>
+  <%= link_to "CREATE NEW CLOSET", new_user_closet_path(current_user) %>
 </div>
-<div class = "col-sm-9">
-<center>
-<p>
-  ---Feed---
-</p>
-<br><br>
+
+<div class = "col-sm-7">
+  <h3>News Feed</h3>
+  <%= render 'shared/stats' %>
+  <br><br>
+
   <%@user.feed.each do |followed|%>
-  <div class = "col-sm-4">
-    <p><h4><%=followed.name%></h4>
-      <h6>By:<a href = "/users/<%=User.find(followed.board_id).slug%>"> <%= User.find(followed.board_id).username %></h6></a>
-    </p>
-
-    <br><br>
-  </div>
+    <div class = "col-sm-4">
+      <p><h4><%=followed.name%></h4>
+        <h6>By:<a href = "/users/<%=User.find(followed.board_id).slug%>"> <%= User.find(followed.board_id).username %></h6></a>
+      </p>
+      <br><br>
+    </div>
   <%end%>
-
-</center>
 </div>

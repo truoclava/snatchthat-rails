@@ -1,13 +1,22 @@
-<h2>Search Results For: <%= @keyword %></h2>
-<% @item_asins.each do |item_asin| %>
-  <%= form_tag new_item_path, method: "get" do %>
-    <%= item_asin %>
-    <%= hidden_field_tag 'item[source_id]', item_asin %>
-    <%= hidden_field_tag 'item[source_type]', "Amazon" %>
-    <%= submit_tag('Add Item to Closet')%>
-  <% end %>
-<% end %>
+<h2><%= @results.length %> Search Results For: <%= @keyword %> From <%= @source_type %> </h2>
 
-<br>
-<h3>New Search</h3>
-<%= render 'form' %>
+<% @results.each do |result| %>
+  <%= form_tag '/items' do %>
+  <ul>
+
+    <%= link_to result['name'], result['url'], target: "_blank" %>
+    <%= hidden_field_tag 'item[name]', result["name"] %><br>
+    <%= hidden_field_tag 'item[url]', result["url"] %><br>
+    <%= image_tag result['image_url'] %><br>
+    <%= hidden_field_tag 'item[image_url]', result["image_url"] %><br>
+    <strong>Source Id:</strong>
+    <%= result["source_id"]%>
+    <%= hidden_field_tag 'item[source_id]', result["source_id"] %><br>
+    <strong>Price:</strong>
+    <%= result["price"]%>
+    <%= hidden_field_tag 'item[price]', result["price"] %>
+  </ul>
+  <%= hidden_field_tag 'item[source_type]', @source_type %>
+  <%= submit_tag('Add Item to Closet')%><br><br>
+<% end %>
+<% end %>

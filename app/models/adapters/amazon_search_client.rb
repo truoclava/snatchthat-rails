@@ -15,8 +15,7 @@ module Adapters
         'Availability' => 'Available',
         'Keywords' => keyword,
         'SearchIndex' => 'Fashion',
-        'ResponseGroup' => 'ItemAttributes, Offers, Variations'}.to_h
-
+        'ResponseGroup' => 'ItemAttributes, Offers, Images, Variations'}.to_h
       connection.item_search(query: params).to_h
     end
 
