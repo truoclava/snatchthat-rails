@@ -1,26 +1,28 @@
-<h1><%= @closet.name %></h1>
+<div class="col-md-3">
+  <h1><%= @closet.name %></h1>
 
-<div class = "row">
+  <div class = "row">
 
-  <div class = "col-md-4">
-    <h1><%= link_to "+", new_item_path, {:style=>'display:inline-block;''width:100px;''height:100px;''text-align: center;''padding-top: 25px;
-  ''text-decoration: none;', :class => "butt"} %></h1>
+    <div class = "col-md-4">
+      <h1><%= link_to "+", new_item_path, {:style=>'display:inline-block;''width:100px;''height:100px;''text-align: center;''padding-top: 25px;
+    ''text-decoration: none;', :class => "butt"} %></h1>
+    </div>
+
+  <% @closet.items.each do |item| %>
+   <div class = "col-md-4" style = "height:200px; width:200px;">
+    <%= link_to item.name, item_path(item) %><br>
+    <%= image_tag item.image_url %><br>
+    <strong>Price: </strong>
+    <%= item.prices.last.price %>
+        <li>
+        <h4><%= item.prices.count%></h4>
+        </li>
+
+    ASIN: <%= item.source_id %><br>
+    <%= link_to 'Delete', closet_item_path, method: :delete %><br>
+   </div>
+
+  <% end %>
+
   </div>
-
-<% @closet.items.each do |item| %>
- <div class = "col-md-4" style = "height:200px; width:200px;">
-  <%= link_to item.name, item_path(item) %><br>
-  <%= image_tag item.image_url %><br>
-  <strong>Price: </strong>
-  <%= item.prices.last.price %>
-      <li>
-      <h4><%= item.prices.count%></h4>
-      </li>
-
-  ASIN: <%= item.source_id %><br>
-  <%= link_to 'Delete', closet_item_path, method: :delete %><br>
- </div>
-
-<% end %>
-
 </div>
