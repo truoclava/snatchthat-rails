@@ -66,9 +66,10 @@ ActiveRecord::Schema.define(version: 20151208190557) do
     t.string   "url"
     t.string   "price"
     t.string   "source_id"
+    t.string   "source_type"
     t.string   "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "prices", force: :cascade do |t|
@@ -106,7 +107,6 @@ ActiveRecord::Schema.define(version: 20151208190557) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.integer  "phone_number"
-
     t.boolean  "notifications",          default: true
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
