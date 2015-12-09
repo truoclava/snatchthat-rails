@@ -1,9 +1,9 @@
+<div class="col-xs-12">
 <h2><%= @results.length %> Search Results For: <%= @keyword %> From <%= @source_type %> </h2>
 
 <% @results.each do |result| %>
   <%= form_tag '/items' do %>
   <ul>
-
     <%= link_to result['name'], result['url'], target: "_blank" %>
     <%= hidden_field_tag 'item[name]', result["name"] %><br>
     <%= hidden_field_tag 'item[url]', result["url"] %><br>
@@ -17,6 +17,7 @@
     <%= hidden_field_tag 'item[price]', result["price"] %>
   </ul>
   <%= hidden_field_tag 'item[source_type]', @source_type %>
-  <%= submit_tag('Add Item to Closet')%><br><br>
+  <%= submit_tag 'Add Item to Closet', class: 'btn btn-default' %><br><br>
 <% end %>
 <% end %>
+</div>

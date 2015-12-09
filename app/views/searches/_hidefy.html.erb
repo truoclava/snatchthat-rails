@@ -1,5 +1,5 @@
 <%= form_tag searches_path, method: "get" do %>
-  <%= text_field_tag :keyword %>
-  <%= hidden_field_tag 'item[source_type]', 'Hidefy' %>
-  <%= submit_tag('Search Hidefy')%>
+  <%= text_field_tag :keyword, 'Hidefy', class: "form-control", id: "inputDefault", style: "width: 250px;" %>
+  <%= hidden_field_tag 'item[source_type]', 'Hidefy', class: "form-control", id: "inputDefault", style: "width: 250px;" %><br>
+  <%= submit_tag 'Search Hidefy', class: 'btn btn-default'%>
 <% end %>

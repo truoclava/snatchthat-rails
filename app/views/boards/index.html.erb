@@ -27,8 +27,8 @@
   <section class="stats">
     <%= render 'shared/stats' %>
   </section>
-  </p>
-
+</p><br>
+  <a href = "/users/<%= current_user.slug %>">My Profile</a> | <%= link_to "Recent Activity", following_user_path(current_user.slug) %> | <%= link_to "Trending", followers_user_path(current_user.username) %>
 </div>
 
 <div class = "col-sm-9">
@@ -45,7 +45,7 @@
     <%@user.activity_feed.each do |activity|%>
 
     <br>
-    
+
     <% if current_user.username == activity.user.username %>
     You
     <%else%>
