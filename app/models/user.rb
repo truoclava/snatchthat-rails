@@ -96,6 +96,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  def notifications?
+    current_user.notifications
+  end
 
 
   private
