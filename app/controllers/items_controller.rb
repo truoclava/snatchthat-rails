@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
     if params[:item][:source_type] == "Amazon"
       client = Adapters::AmazonItemClient.new
       item = client.create_from_source_id(params[:item][:source_id])
-      @item = client.create_from_source_id(params[:item][:source_id])
       item.source_id = "Amazon"
       item.save
 

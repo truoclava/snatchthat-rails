@@ -70,10 +70,13 @@ class User < ActiveRecord::Base
   end
 
   def feed
-
   following_ids = "SELECT followed_id FROM relationships
                      WHERE  follower_id = :board_id"
   Closet.where("board_id IN (#{following_ids})", board_id: id)
+  end
+
+  def activity_feed
+   Activity.order("created_at desc")
   end
 
   def self.find_for_database_authentication(warden_conditions)

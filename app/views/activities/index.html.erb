@@ -1,22 +1,21 @@
 <h1>Activities</h1>
 
 <% @activities.each do |activity| %>
-  
  
 <p>
     <%= link_to activity.user.username, activity.user %>
    
    <% if activity.trackable.class == Closet && activity.action == "create" %>
-    <em class = "text-muted">created</em> <%=activity.trackable.name%>
+    <em class = "text-muted">created closet </em> <%=activity.trackable.name%>
 
     <% elsif activity.trackable.class == Closet && activity.action == "destroy"%>
-    <em class = "text-muted">deleted</em> <%=activity.trackable.name%> 
+    <em class = "text-muted">deleted closet </em> <%=activity.trackable.name%> 
 
     <% elsif activity.trackable.class == ClosetItem && activity.action == "create"%>
-    <em class = "text-muted">added</em> item <%= Item.find(activity.trackable.item_id).name %> <em class = "text-muted">to</em> <%= Closet.find(activity.trackable.closet_id).name %>
+    <em class = "text-muted">added</em> item
 
-    <% elsif activity.trackable.class == ClosetItem && activity.action == "destroy"%>
-    <em class = "text-muted">deleted</em> <%= Item.find(activity.trackable.item_id).name %> <em class = "text-muted">from</em> <%= Closet.find(activity.trackable.closet_id).name %>
+    <% elsif activity.trackable_type == "ClosetItem" && activity.action == "destroy"%>
+    <em class = "text-muted">deleted</em> item 
 
     <% elsif activity.trackable.class == User && activity.action == "create"%>
     <em class = "text-muted">followed</em> <%= activity.trackable.username %>
