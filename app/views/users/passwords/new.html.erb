@@ -5,12 +5,10 @@
 
   <div class="field">
     <%= f.label :login %><br />
-    <%= f.text_field :login %>
-  </div>
+    <%= f.text_field :login, class: "form-control", id: "inputDefault", style: "width: 250px;" %>
+  </div><br>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "Send me reset password instructions", class: "btn btn-default" %><br>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>

@@ -3,8 +3,8 @@
 # to close whenever -c theCronJob
 
 set :environment, :development
-set  :output, "#{path}/log/cron.log"
+set :output, "#{path}/log/cron.log"
 
-every 1.hours do
+every 10.minutes do
   rake 'price_check'
 end

@@ -1,6 +1,7 @@
 <div class = "col-sm-3">
-<h1><%=@user.username%>'s Closets</h1>
-<br><br>
+<h1><%=@user.username.capitalize%></h1>
+<br>
+<%= image_tag ("Kjartan"), size: "200x200" %><br><br>
 <section class="stats">
   <%= render 'shared/stats' %>
 </section>
@@ -13,9 +14,8 @@
 </div>
 <div class = "col-sm-9">
   <center>
-    <p>
-    ----- CLOSETS -----
-    </p>
+    <h2>Closets</h2>
+    <hr>
     <br><br>
     <%@user.closets.each do |closet|%>
     <div class = "col-sm-4">
@@ -23,6 +23,6 @@
       <br><br>
     </div>
     <%end%>
-    
+
   </center>
 </div>
