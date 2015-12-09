@@ -11,7 +11,8 @@ class ClosetItemsController < ApplicationController
     else
       item_id = params[:item_id]
       closet_ids.each do |closet_id|
-        ClosetItem.create(closet_id: closet_id, item_id: item_id)
+        @closetitem = ClosetItem.create(closet_id: closet_id, item_id: item_id)
+        track_activity(@closetitem)
       end
     end
       # add redirect to closet show page if only added to one closet
@@ -20,8 +21,8 @@ class ClosetItemsController < ApplicationController
 
   def destroy
     @closet_item = ClosetItem.find(params[:id])
-    @closet_item.destroy
     track_activity(@closet_item)
+    @closet_item.destroy
     redirect_to user_closet_path(current_user, @closet_item.closet_id)
   end
 

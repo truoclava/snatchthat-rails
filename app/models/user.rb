@@ -13,7 +13,8 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
-#  phone_number           :integer
+#  phone_number           :string
+#  notifications          :boolean          default(TRUE)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  slug                   :string
@@ -75,6 +76,10 @@ class User < ActiveRecord::Base
     Closet.where("board_id IN (#{following_ids})", board_id: id)
   end
 
+  def activity_feed
+   Activity.order("created_at desc")
+  end
+
   def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
       if login = conditions.delete(:login)
@@ -96,7 +101,7 @@ class User < ActiveRecord::Base
   end
 
   def notifications?
-    current_user.notifications
+    User.find_by(id: current_user.id).notifications
   end
 
   private

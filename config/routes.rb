@@ -24,7 +24,7 @@ Rails.application.routes.draw do
         root 'boards#index', as: :authenticated_root
     end
     unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+      root 'devise/registrations#new', as: :unauthenticated_root
     end
   end
 

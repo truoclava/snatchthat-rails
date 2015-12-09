@@ -22,32 +22,42 @@
 // Then bootstrap itself
 @import "bootstrap";
 
+@font-face {
+  font-family: 'Streetwear';
+  src: url(app/assets/fonts/Streetwear.otf);
+}
 // Bootstrap body padding for fixed navbar
 body { padding-top: 0px; }
+
 #box {
  padding-left: 60px;
 }
+
 #home-button {
   color: white;
+  font-family: 'Streetwear';
+  position: relative;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
 .butt{
    border: 1px solid #ddd;
    background-color: #f0f0f0;
-   
+
    height: 100 px;
    width: 100 px;
 
 
-    -o-transition: background-color .2s ease-in; 
+    -o-transition: background-color .2s ease-in;
     -moz-transition: background-color .2s ease-in;
 
-    -webkit-transition: background-color .2s ease-in; 
-    transition: background-color .2s ease-in; 
+    -webkit-transition: background-color .2s ease-in;
+    transition: background-color .2s ease-in;
 }
 
 .butt:hover {
-    background-color: #e5e5e5;    
+    background-color: #e5e5e5;
 }
 
 .butt:active {
@@ -75,6 +85,14 @@ body { padding-top: 0px; }
   strong {
     display: block;
   }
+}
+
+#sign-in-text{
+  margin-right: 3px;
+}
+
+#settings-text {
+  margin-right: 5px;
 }
 
 .mybtn{

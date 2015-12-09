@@ -13,35 +13,24 @@
 
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-        <ul class="nav navbar-nav">
-        <% if user_signed_in? %>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-              Closet
-            </a>
-            <ul class="dropdown-menu" role="menu">
-             <li class="view_option" id="0"><%= link_to "My Board", user_boards_path(current_user.id) %></li>
-             <li class="divider"></li>
-             <% current_user.closets.each do |closet| %>
-               <li class="view_option" id="#"> <%= link_to closet.name, user_closet_path(current_user.id, closet.id) %></li>
-             <% end %>
-           </ul>
-          </li>
-        <% end %>
-        </ul>
+
         <!-- login -->
         <ul class="nav navbar-nav pull-right">
          <% if user_signed_in? %>
-           <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-           <li><%= link_to('Settings', edit_user_registration_path) %></li>
+           <li><%= link_to "Sign Out", destroy_user_session_path, id: 'sign-out-text', :method => :delete %></li>
+           <li><%= link_to 'Settings', edit_user_registration_path, id: 'settings-text' %></li>
          <% else %>
           <li class="dropdown">
-            <li><%= link_to "Sign In", new_user_session_path %></li>
-            <!-- <li><%= link_to "Sign Up", new_user_registration_path %></li> -->
-          </li>
+            <%= form_for(resource, :as => resource_name, :url => new_user_session_path, :html => { :class => 'navbar-form navbar-right' }) do |f| %>
+                <%= f.text_field :login, :placeholder => 'Username', :class => "form-control" %>
+                <%= f.password_field :password, :placeholder => 'Password', :class => "form-control" %>
+                <%= f.submit 'Sign In', :class => 'btn btn-default' %>
+            <% end %>
          <% end %>
         </ul>
+
     </div>
+
   </div>
   </div>
 </ul>

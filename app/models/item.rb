@@ -5,6 +5,7 @@
 #  id          :integer          not null, primary key
 #  name        :string
 #  url         :string
+#  price       :string
 #  source_id   :string
 #  source_type :string
 #  image_url   :string

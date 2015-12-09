@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-
     @item = Item.create(item_params)
     @item.prices << Price.create(price: params[:item][:price])
     redirect_to new_closet_item_path
