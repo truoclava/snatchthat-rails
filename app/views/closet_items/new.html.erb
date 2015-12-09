@@ -1,0 +1,20 @@
+<h1>New Item for Closet</h1>
+
+<h3><%= @item.name %></h3>
+<h4>Price: <%= @item.prices.last.price %></h4>
+
+
+<%= form_for :closet_item, url: {action: 'create'} do |f|%>
+<%= hidden_field_tag :item_id, @item.id %>
+  <div class="field">
+    <%= label_tag :closets %><br>
+    <% current_user.closets.each do |closet| %>
+      <%= check_box_tag 'closet_ids[]', closet.id -%>
+      <%= closet.name -%><br>
+    <% end %>
+  </div><br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

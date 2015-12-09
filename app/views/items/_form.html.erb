@@ -1,11 +1,14 @@
 <%= form_for :item, url: {action: 'create'} do |f|%>
   <div class="field">
+<<<<<<< HEAD
+=======
     <%= f.label :source_id, 'Source ID (TEST W/ B00B2L7DY2):' %><br>
     <%= f.text_field :source_id, :value => @item.source_id, class: "form-control", id: "focusedInput", style: "width: 300px;" %><br>
     <%= hidden_field_tag 'item[source_type]', @item.source_type %>
     <%= hidden_field_tag 'item[price]', @item.price %>
   </div>
   <div class="field">
+>>>>>>> refs/remotes/origin/master
     <%= label_tag :closets %><br>
     <% current_user.closets.each do |closet| %>
       <%= check_box_tag 'closet_ids[]', closet.id -%>

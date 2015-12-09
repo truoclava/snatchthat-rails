@@ -14,6 +14,4 @@ class Closet < ActiveRecord::Base
   has_many :closet_items
   has_many :items, through: :closet_items
 
-  # has_many :activities, as: :trackable
-  
 end
