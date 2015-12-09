@@ -5,19 +5,11 @@ module Adapters
       @connection = Adapters::TwilioConnection.new
     end
 
-    def test_message
-      old_price = 100
-      new_price = 80
-      price_dif = old_price - new_price
-      item_instance = Item.last
-      send_message(price_dif, item_instance)
-    end
 
     def send_message(price_dif, item_instance)
       good_bad_news = comment_creater(price_dif, item_instance)
-      #this phone_number is supposed to be item.user.phone_number
-      phone_number = "+#{item_instance.phone_number}"
-
+      phone_number = "+#{item_instance.closets.first.board.user.phone_number}".to_i
+    
       message = connection.client.account.messages.create(
         :from => connection.twilio_number,
         :to => phone_number,
