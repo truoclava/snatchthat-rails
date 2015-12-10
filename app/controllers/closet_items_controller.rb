@@ -16,7 +16,6 @@ class ClosetItemsController < ApplicationController
         @closetitem.save
         track_activity(@item)
       end
-      
     end
     redirect_to '/'
   end
@@ -27,7 +26,7 @@ class ClosetItemsController < ApplicationController
     track_activity(@item)
 
     @closet_item.destroy
-    
+
     redirect_to user_closet_path(current_user, @closet_item.closet_id)
   end
 

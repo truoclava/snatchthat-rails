@@ -13,6 +13,8 @@ class ClosetItem < ActiveRecord::Base
   belongs_to :closet
   belongs_to :item
 
+  validates_uniqueness_of :closet_id, :scope => :item_id
+
   def exists?
     ClosetItem.exists?(closet_id: self.closet_id, item_id: self.item_id)
   end

@@ -15,13 +15,15 @@
 
 class Item < ActiveRecord::Base
   has_many :closet_items
-  has_many :closets, through: :closet_items
+  has_many :closets, through: :closet_items, :counter_cache => true
   has_many :prices
+
+  validates :source_id, presence: true, uniqueness: true
+  validates :source_type, presence: true
 
   def exists?
     Item.exists?(source_id: self.source_id)
   end
-
 
   def get_hidefy_price(end_path)
     hidefy_item_data = Adapters::HidefyConnection.new.query(end_path)
@@ -34,8 +36,12 @@ class Item < ActiveRecord::Base
     self.prices << new_price
   end
 
-  def how_many_users_have_this
-    self.closets.length
+  def self.most_popular
+    count = []
+    Item.all.each_with_index do |item, i|
+      count << item.closets.count
+    end
+    Item.find(count.index(count.max)+1)
   end
 
 

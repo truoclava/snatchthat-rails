@@ -1,17 +1,16 @@
 class SearchesController < ApplicationController
 
   def index
-    if params[:keyword].blank?
-      binding.pry
+    keyword = params[:keyword]
+    source_type = params[:item][:source_type]
+    if keyword.blank?
       redirect_to new_search_path
     else
-      keyword = params[:keyword]
-      source_type = params[:item][:source_type]
-
-      @results = Search.create_results_hash(keyword, source_type)
-      @keyword = keyword
-      @source_type = source_type
+      @search = Search.new(keyword, source_type)
+      @results = @search.results
     end
   end
+
+
 
 end

@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20151210192228) do
   create_table "closets", force: :cascade do |t|
     t.string   "name"
     t.integer  "board_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

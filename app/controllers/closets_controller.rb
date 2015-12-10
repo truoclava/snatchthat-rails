@@ -12,7 +12,6 @@ class ClosetsController < ApplicationController
     @closet = Closet.new(closet_params)
     @closet.save
     track_activity(@closet)
-    # binding.pry
     redirect_to '/'
   end
 
@@ -25,7 +24,7 @@ class ClosetsController < ApplicationController
 
   private
   def closet_params
-    params.require(:closet).permit(:name, :board_id)
+    params.require(:closet).permit(:name, :board_id, :user_id)
   end
 
 
