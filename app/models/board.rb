@@ -15,6 +15,7 @@ class Board < ActiveRecord::Base
   has_many :items, through: :closet_items
   validates :user_id, presence: true, uniqueness: true
 
+
   def outline
     "There are #{self.items.count} items on your page."
   end
@@ -28,5 +29,17 @@ class Board < ActiveRecord::Base
     @user = self.user.followers.find_by(name: user_name)
     # @user.destroy
   end
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> price_analytics
 
 end

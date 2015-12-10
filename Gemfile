@@ -36,6 +36,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'twilio-ruby'
 gem 'httparty'
 gem 'paperclip'
+gem 'descriptive-statistics'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

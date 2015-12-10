@@ -106,8 +106,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def notifications?
-    User.find_by(id: current_user.id).notifications
+  def notifications?(user_id)
+    User.find_by(id: user_id).notifications
   end
 
   private
