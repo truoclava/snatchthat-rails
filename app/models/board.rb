@@ -31,15 +31,4 @@ class Board < ActiveRecord::Base
   end
 
 
-
-
-
-
-
-
-
-
-
->>>>>>> price_analytics
-
 end

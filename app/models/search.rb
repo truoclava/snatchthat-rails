@@ -19,8 +19,8 @@ class Search < ActiveRecord::Base
   def results
     if self.source_type == 'Amazon'
       self.amazon_hash
-    else self.source_type == 'Hidefy'
-      self.hedify_hash
+    else
+      self.hidefy_hash
     end
   end
 
