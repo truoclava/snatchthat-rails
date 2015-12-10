@@ -38,5 +38,10 @@ class Item < ActiveRecord::Base
     self.closets.length
   end
 
+  def get_amazon_price(asin)
+    Adapters::AmazonPriceClient.new.get_amazon_price(source_id)
+  end
+
+
 
 end
