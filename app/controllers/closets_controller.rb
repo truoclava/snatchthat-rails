@@ -19,6 +19,7 @@ class ClosetsController < ApplicationController
   def destroy
     @closet = Closet.find(params[:id])
     @closet.destroy
+    track_activity(@closet)
     redirect_to '/'
   end
 
