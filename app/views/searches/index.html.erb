@@ -3,7 +3,6 @@
 <% @results.in_groups_of(3) do |group| %>
   <div class="row">
     <% group.compact.each do |result| %>
-    <% binding.pry %>
       <center>
       <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
@@ -17,7 +16,7 @@
         <%= hidden_field_tag 'item[image_url]', result["image_url"] %>
         <%= hidden_field_tag 'item[source_id]', result["source_id"] %>
         <%= hidden_field_tag 'item[price]', result["price"] %>
-        <%= hidden_field_tag 'item[source_type]', r@search.source_type %>
+        <%= hidden_field_tag 'item[source_type]', @search.source_type %>
         <p><%= submit_tag 'Add to Closet', class: 'btn btn-primary' %></p>
         <% end %>
         </div>

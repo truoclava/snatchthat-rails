@@ -47,10 +47,4 @@ class Closet < ActiveRecord::Base
   end
 
 
-
-<<<<<<< HEAD
-=======
->>>>>>> master
->>>>>>> votes
-
 end

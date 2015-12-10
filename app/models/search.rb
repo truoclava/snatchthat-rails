@@ -20,7 +20,7 @@ class Search < ActiveRecord::Base
     if self.source_type == 'Amazon'
       self.amazon_hash
     else
-      self.hidefy_hash
+      self.hidefy_hash_parser
     end
   end
 
@@ -48,7 +48,7 @@ class Search < ActiveRecord::Base
     return results
   end
 
-  def self.hedify_hash_parser(keyword)
+  def hidefy_hash_parser
     results = Adapters::HidefyConnection.new.query("items")["items"]
     results_array = []
     results.each do |result|
