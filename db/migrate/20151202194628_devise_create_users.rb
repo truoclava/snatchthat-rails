@@ -21,6 +21,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :phone_number
       t.boolean :notifications, default: true
+      t.attachment :avatar 
 
       ## Confirmable
       # t.string   :confirmation_token

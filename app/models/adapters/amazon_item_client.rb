@@ -25,6 +25,5 @@ module Adapters
       Item.create(name: name, url: url, price: price, source_id: source_id, image_url: image_url)
     end
 
-
   end
 end

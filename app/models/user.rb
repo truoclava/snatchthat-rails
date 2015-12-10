@@ -32,9 +32,8 @@ class User < ActiveRecord::Base
        :validatable, :authentication_keys => [:login]
 
   validate :validate_username
-
-  # validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/
-
+  validates_format_of :username, with: /\A[\w\-\.]+\z/
+  validates :phone_number, presence: true, length: { is: 10 }, numericality: { only_integer: true }, uniqueness: true
 
   after_create :create_board
 
@@ -52,6 +51,9 @@ class User < ActiveRecord::Base
   # has_many :followers, through: :passive_relationships, source: :follower
   has_many :followers, through: :passive_relationships
   has_many :activities
+
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   attr_accessor :login
 
@@ -91,7 +93,7 @@ class User < ActiveRecord::Base
   end
 
   def email_required?
-    false
+    true
   end
 
   def validate_username
