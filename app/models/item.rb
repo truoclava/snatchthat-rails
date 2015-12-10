@@ -22,7 +22,6 @@ class Item < ActiveRecord::Base
     Item.exists?(source_id: self.source_id)
   end
 
-
   def get_hidefy_price(end_path)
     hidefy_item_data = Adapters::HidefyConnection.new.query(end_path)
     current_price = hidefy_item_data["price"]
@@ -41,6 +40,28 @@ class Item < ActiveRecord::Base
   def get_amazon_price(asin)
     Adapters::AmazonPriceClient.new.get_amazon_price(source_id)
   end
+
+  def last_24hr_prices
+    prices_instance_array = prices.where(created_at: (Time.now - 24.hours)..Time.now)
+    price_array = []
+    prices_instance_array.each do |price|
+      price_array << price.price.to_i
+    end
+    price_array
+  end
+
+  def stats
+    last_24hrs_array = last_24hr_prices
+    stats = DescriptiveStatistics::Stats.new(last_24hrs_array)
+    # returns stats instance
+  end
+
+  def price_dif
+    last_price = self.prices[-1]
+    second_last_price = self.prices[-2]
+    price_change = last_price.price.to_i - second_last_price.price.to_i
+  end
+
 
 
 

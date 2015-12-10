@@ -15,4 +15,15 @@ class Board < ActiveRecord::Base
   has_many :items, through: :closet_items
   validates :user_id, presence: true, uniqueness: true
 
+
+
+
+
+
+
+
+
+
+
+
 end

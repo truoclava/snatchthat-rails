@@ -5,7 +5,6 @@ module Adapters
       @connection = Adapters::TwilioConnection.new
     end
 
-
     def send_message(price_dif, item_instance)
       good_bad_news = comment_creater(price_dif, item_instance)
       phone_number = "+#{item_instance.closets.first.board.user.phone_number}".to_i
