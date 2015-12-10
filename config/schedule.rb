@@ -1,6 +1,6 @@
-
-# to excute the code below, type 'bundle exec whenever -w' in the terminal
-# to close whenever -c theCronJob
+# to excute the code below, type 'bundle exec whenever' in the terminal
+# to stop the program crontab -r
+# to check if this is working, check log/cron.log
 
 set :environment, :development
 set :output, "#{path}/log/cron.log"
