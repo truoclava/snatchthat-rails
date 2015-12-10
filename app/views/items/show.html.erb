@@ -4,14 +4,17 @@
 <%= image_tag @item.image_url %><br>
 <strong>Price: </strong><%= @item.prices.last.price %><br>
 <strong>Source ID:</strong> <%= @item.source_id %><br>
-<%= link_to 'Buy on Amazon', @item.url, target: "_blank", class: "btn btn-success" %>
+<%= link_to 'Buy on Amazon', @item.url, target: "_blank", class: "btn btn-success" %><br><br>
 
   <br><br>
   <h3>Closets:</h3>
   <% @item.closets.each do |closet| %>
     <%= link_to closet.name, user_closet_path(current_user, closet) %><br>
   <% end %>
+<br><br>
+  <%= link_to 'Add to Closet', new_closet_item_path(:item_id => @item), target: "_blank", class: "btn btn-success" %>
 </div>
+
 
 <div class="col-sm-9">
   <h2>Price</h2>

@@ -25,8 +25,8 @@ class Search < ActiveRecord::Base
   end
 
   def amazon_hash
+    #source_id = "B014NHULAE"
     client = Adapters::AmazonSearchClient.new
-    binding.pry
     results = client.amazon_search(self.keyword)
     items = results['ItemSearchResponse']['Items']['Item']
     self.amazon_parser(items)
@@ -38,7 +38,9 @@ class Search < ActiveRecord::Base
       source_id = item['ASIN']
       name = item['ItemAttributes']['Title']
       url = item['DetailPageURL']
-      # item['MediumImage'].blank?
+      if item['MediumImage'].blank?
+        item['MediumImage'] = ''
+      end
       image_url =  item['MediumImage']['URL']
       price = item['OfferSummary']['LowestNewPrice']['FormattedPrice']
       results << self.item_hash(source_id, name, url, image_url, price)

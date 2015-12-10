@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     @item = Item.new(item_params)
     if @item.exists?
       @item = Item.find_by(source_id: @item.source_id)
