@@ -1,4 +1,4 @@
-<h3><%= @results.length %> items matching "<%= @keyword %>" from <%= @source_type %> </h3>
+<h3><%= @results.length %> items matching "<%= @search.keyword %>" from <%= @search.source_type %> </h3>
 
 <% @results.in_groups_of(3) do |group| %>
   <div class="row">
@@ -10,7 +10,7 @@
         <%= image_tag result['image_url'] %>
         <div class="caption">
         <p>Price: <%= result['price']%></p>
-        <%= form_tag items_path do %>
+        <%= form_tag items_path target: "_blank" do %>
         <%= hidden_field_tag 'item[name]', result["name"] %>
         <%= hidden_field_tag 'item[url]', result["url"] %>
         <%= hidden_field_tag 'item[image_url]', result["image_url"] %>

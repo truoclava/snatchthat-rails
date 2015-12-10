@@ -9,11 +9,8 @@ class ClosetItemsController < ApplicationController
     item_id = params[:item_id]
     closet_ids.each do |closet_id|
       @closetitem = ClosetItem.new(closet_id: closet_id, item_id: item_id)
-      if @closetitem.exists?
-        @closetitem.destory
-      else
-        @closetitem.save
-      end
+      @closetitem.save
+      # end
       track_activity(@closetitem)
     end
     redirect_to '/'

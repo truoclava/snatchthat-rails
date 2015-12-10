@@ -2,7 +2,8 @@
   <div class="field form-group">
     <%= f.label :name, class: "control-label", for: "inputDefault" %><br>
     <%= f.text_field :name, class: "form-control", id: "inputDefault", style: "width: 250px;" %>
-    <%= f.hidden_field :board_id, :value => current_user.id %>
+    <%= f.hidden_field :board_id, :value => current_user.board.id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
   <div class="actions">
     <%= f.submit class: "btn btn-default" %>

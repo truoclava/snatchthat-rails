@@ -6,21 +6,15 @@ module Adapters
     end
 
     def amazon_search(keyword)
-      hashed_results = results(keyword)
-      hashed_results["ItemSearchResponse"]["Items"]["Item"]
+      hashed_results = connection.item_search(query: params(keyword)).to_h
     end
 
-    def results(keyword)
-      params = {
+    def params(keyword)
+      {
         'Availability' => 'Available',
         'Keywords' => keyword,
         'SearchIndex' => 'Fashion',
         'ResponseGroup' => 'ItemAttributes, Offers, Images, Variations'}.to_h
-      connection.item_search(query: params).to_h
     end
-
-
-
-
   end
 end

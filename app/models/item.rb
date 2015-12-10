@@ -18,6 +18,8 @@ class Item < ActiveRecord::Base
   has_many :closets, through: :closet_items
   has_many :prices
 
+  validates :source_id, presence: true, uniqueness: true
+
   def exists?
     Item.exists?(source_id: self.source_id)
   end
@@ -34,9 +36,9 @@ class Item < ActiveRecord::Base
     self.prices << new_price
   end
 
-  def how_many_users_have_this
-    self.closets.length
-  end
+  # def self.most_popular
+  #
+  # end
 
 
 end

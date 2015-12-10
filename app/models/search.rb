@@ -9,27 +9,41 @@
 
 class Search < ActiveRecord::Base
 
-  def self.create_results_hash(keyword, source_type)
-    if source_type == 'Amazon'
-      self.amazon_hash_parser(keyword)
-    else source_type == 'Hidefy'
-      self.hedify_hash_parser(keyword)
+  attr_accessor :keyword, :source_type
+
+  def initialize(keyword, source_type)
+    @keyword = keyword
+    @source_type = source_type
+  end
+
+  def results
+    if self.source_type == 'Amazon'
+      self.amazon_hash
+    else self.source_type == 'Hidefy'
+      self.hedify_hash
     end
   end
 
-  def self.amazon_hash_parser(keyword)
+  def amazon_hash
     client = Adapters::AmazonSearchClient.new
-    results = client.amazon_search(keyword)
-    results_array = []
-    results.each do |result|
-      source_id = result['ASIN']
-      name = result['ItemAttributes']['Title']
-      url = result['DetailPageURL']
-      image_url =  result['MediumImage']['URL']
-      price = result['OfferSummary']['LowestNewPrice']['FormattedPrice']
-      results_array << self.item_hash(source_id, name, url, image_url, price)
-    end
-    results_array
+    binding.pry
+    results = client.amazon_search(self.keyword)
+    items = results['ItemSearchResponse']['Items']['Item']
+    self.amazon_parser(items)
+  end
+
+  def amazon_parser(items)
+    results = []
+    items.each do |item|
+      source_id = item['ASIN']
+      name = item['ItemAttributes']['Title']
+      url = item['DetailPageURL']
+      # item['MediumImage'].blank?
+      image_url =  item['MediumImage']['URL']
+      price = item['OfferSummary']['LowestNewPrice']['FormattedPrice']
+      results << self.item_hash(source_id, name, url, image_url, price)
+      end
+    return results
   end
 
   def self.hedify_hash_parser(keyword)
@@ -46,7 +60,7 @@ class Search < ActiveRecord::Base
     results_array
   end
 
-  def self.item_hash(source_id, name, url, image_url, price)
+  def item_hash(source_id, name, url, image_url, price)
     {
       'source_id' => source_id,
       'name' => name,
