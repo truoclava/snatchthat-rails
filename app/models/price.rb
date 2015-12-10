@@ -12,11 +12,12 @@
 class Price < ActiveRecord::Base
   belongs_to :item
 
+  #need to refactor
   def self.price_check
     Item.all.each do |item|
       if item.source_type == "Amazon"
         current_price = item.get_amazon_price(item.source_id)
-        price_dif = 10
+        price_dif = item.prices.last.price.to_i - current_price.to_i
         user = item.closets.first.board.user
         if price_dif != 0 && user.notifications?(user.id)
           Adapters::TwilioMessageClient.new.send_message(price_dif, item)
@@ -32,9 +33,12 @@ class Price < ActiveRecord::Base
       new_price = Price.new(price: current_price)
       item.prices << new_price
     end
-    return "Success"
+    "Success"
   end
 
+  def last_24hrs(item_instance)
+    item_instance.prices
+  end
 
 
 
