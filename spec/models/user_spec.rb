@@ -36,7 +36,6 @@ end
       expect(@michael.following?(@archer)).to be false
     end
     it "should be able to follow a user" do
-      binding.pry
       @michael.follow(@archer)
       expect(@michael.following?(@archer)).to be true
     end

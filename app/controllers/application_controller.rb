@@ -10,9 +10,10 @@ class ApplicationController < ActionController::Base
   end
 
   def track_activity(trackable, action = params[:action])
-    
     if trackable.class == Item
       current_user.activities.create!(:action => action, :trackable => trackable, :trackable_name => trackable.name, :trackable_source => trackable.closets.last.name)
+    elsif trackable.class == User
+      current_user.activities.create!(:action => action, :trackable => trackable, :trackable_name => trackable.username)
     else
       current_user.activities.create!(:action => action, :trackable => trackable, :trackable_name => trackable.name)
     end
