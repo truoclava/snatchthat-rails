@@ -15,6 +15,7 @@ class Closet < ActiveRecord::Base
   has_many :closet_items
   has_many :items, through: :closet_items
 
+  acts_as_votable
 
   # it returns hash key => highest_standard_deviation, value = the instance of it
   def get_std_all_items
@@ -47,5 +48,9 @@ class Closet < ActiveRecord::Base
 
 
 
+<<<<<<< HEAD
+=======
+>>>>>>> master
+>>>>>>> votes
 
 end

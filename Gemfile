@@ -28,6 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'annotate'
+gem 'acts_as_votable', '~> 0.10.0'
 
 gem 'faker'
 gem 'vacuum'

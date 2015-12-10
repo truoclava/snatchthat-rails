@@ -33,10 +33,10 @@ body { padding-top: 0px; }
  padding-left: 60px;
 }
 
-#home-button {
+.navbar-brand {
   color: white;
   font-family: 'Streetwear';
-  position: relative;
+  position: absolute;
   margin-top: 5px;
   margin-left: 5px;
 }
@@ -96,8 +96,8 @@ body { padding-top: 0px; }
 }
 
 .mybtn{
-   height: 100 px;
-   width: 100 px;
+   height: 100px;
+   width: 100px;
 }
 
 .profile-image-50 {
