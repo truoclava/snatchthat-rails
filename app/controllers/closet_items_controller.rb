@@ -10,11 +10,12 @@ class ClosetItemsController < ApplicationController
     closet_ids.each do |closet_id|
       @closetitem = ClosetItem.new(closet_id: closet_id, item_id: item_id)
       if @closetitem.exists?
-        @closetitem.destory
+        @closetitem.destroy
       else
         @closetitem.save
+        track_activity(@closetitem)
       end
-      track_activity(@closetitem)
+      
     end
     redirect_to '/'
   end
@@ -23,6 +24,7 @@ class ClosetItemsController < ApplicationController
     @closet_item = ClosetItem.find(params[:id])
     track_activity(@closet_item)
     @closet_item.destroy
+    
     redirect_to user_closet_path(current_user, @closet_item.closet_id)
   end
 
