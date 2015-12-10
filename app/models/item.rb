@@ -5,7 +5,7 @@
 #  id          :integer          not null, primary key
 #  name        :string
 #  url         :string
-#  price       :string
+#  price       :integer
 #  source_id   :string
 #  source_type :string
 #  image_url   :string
@@ -28,10 +28,5 @@ class Item < ActiveRecord::Base
     new_price = Price.new(price: current_price)
     self.prices << new_price
   end
-
-  def how_many_users_have_this
-    self.closets.length
-  end
-
 
 end
