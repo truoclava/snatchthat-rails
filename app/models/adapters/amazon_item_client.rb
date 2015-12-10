@@ -14,7 +14,6 @@ module Adapters
 
       results = connection.item_lookup(query: params).to_h
 
-
       info = results['ItemLookupResponse']['Items']['Item']
 
       name = info['ItemAttributes']['Title']

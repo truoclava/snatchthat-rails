@@ -26,11 +26,6 @@ class Price < ActiveRecord::Base
       new_price = Price.new(price: current_price)
       item.prices << new_price
     end
-    array = []
-    Item.last.prices.each do |price|
-      array << price.price
-    end
-    array
   end
 
 end

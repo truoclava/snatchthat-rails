@@ -5,7 +5,7 @@
 #  id          :integer          not null, primary key
 #  name        :string
 #  url         :string
-#  price       :string
+#  price       :integer
 #  source_id   :string
 #  source_type :string
 #  image_url   :string
@@ -37,9 +37,6 @@ class Item < ActiveRecord::Base
   def how_many_users_have_this
     self.closets.length
   end
-
-  # most popular items
-
 
 
 end
