@@ -12,6 +12,9 @@
 class ClosetItem < ActiveRecord::Base
   belongs_to :closet
   belongs_to :item
-  
+
+  def exists?
+    ClosetItem.exists?(closet_id: self.closet_id, item_id: self.item_id)
+  end
 
 end

@@ -1,23 +1,28 @@
-<div class="col-xs-12">
-<h2><%= @results.length %> Search Results For: <%= @keyword %> From <%= @source_type %> </h2>
+<h3><%= @results.length %> items matching "<%= @keyword %>" from <%= @source_type %> </h3>
 
-<% @results.each do |result| %>
-  <%= form_tag '/items' do %>
-  <ul>
-    <%= link_to result['name'], result['url'], target: "_blank" %>
-    <%= hidden_field_tag 'item[name]', result["name"] %><br>
-    <%= hidden_field_tag 'item[url]', result["url"] %><br>
-    <%= image_tag result['image_url'] %><br>
-    <%= hidden_field_tag 'item[image_url]', result["image_url"] %><br>
-    <strong>Source Id:</strong>
-    <%= result["source_id"]%>
-    <%= hidden_field_tag 'item[source_id]', result["source_id"] %><br>
-    <strong>Price:</strong>
-    <%= result["price"]%>
-    <%= hidden_field_tag 'item[price]', result["price"] %>
-  </ul>
-  <%= hidden_field_tag 'item[source_type]', @source_type %>
-  <%= submit_tag 'Add Item to Closet', class: 'btn btn-default' %><br><br>
-<% end %>
-<% end %>
+<% @results.in_groups_of(3) do |group| %>
+  <div class="row">
+    <% group.compact.each do |result| %>
+      <center>
+      <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <h5><%= link_to result['name'], result['url'], target: "_blank" %></h5>
+        <%= image_tag result['image_url'] %>
+        <div class="caption">
+        <p>Price: <%= result['price']%></p>
+        <%= form_tag items_path do %>
+        <%= hidden_field_tag 'item[name]', result["name"] %>
+        <%= hidden_field_tag 'item[url]', result["url"] %>
+        <%= hidden_field_tag 'item[image_url]', result["image_url"] %>
+        <%= hidden_field_tag 'item[source_id]', result["source_id"] %>
+        <%= hidden_field_tag 'item[price]', result["price"] %>
+        <%= hidden_field_tag 'item[source_type]', @source_type %>
+        <p><%= submit_tag 'Add to Closet', class: 'btn btn-primary' %></p>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</center>
+  <% end %>
 </div>
+<% end %>

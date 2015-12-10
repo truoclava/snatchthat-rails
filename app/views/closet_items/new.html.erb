@@ -1,7 +1,7 @@
-<h1>New Item for Closet</h1>
+<h2>New Item for Closet</h2>
 
-<h3><%= @item.name %></h3>
-<h4>Price: <%= @item.prices.last.price %></h4>
+<h4><%= @item.name %></h4>
+<h5>Price: <%= @item.prices.last.price %></h5>
 
 <%= form_for :closet_item, url: {action: 'create'} do |f|%>
 <%= hidden_field_tag :item_id, @item.id %>

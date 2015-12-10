@@ -16,6 +16,12 @@ class ClosetsController < ApplicationController
     redirect_to '/'
   end
 
+  def destroy
+    @closet = Closet.find(params[:id])
+    @closet.destroy
+    redirect_to '/'
+  end
+
   private
   def closet_params
     params.require(:closet).permit(:name, :board_id)

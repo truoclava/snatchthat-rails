@@ -4,7 +4,7 @@
 <%= image_tag @item.image_url %><br>
 <strong>Price: </strong><%= @item.prices.last.price %><br>
 <strong>Source ID:</strong> <%= @item.source_id %><br>
-<%= link_to 'Buy on Amazon', @item.url, target: "_blank" %>
+<%= link_to 'Buy on Amazon', @item.url, target: "_blank", class: "btn btn-success" %>
 
   <br><br>
   <h3>Closets:</h3>

@@ -1,27 +1,25 @@
-<div class="col-xs-12">
-  <center><h1><%= @closet.name %></h1>
-    <hr>
+<center><h3><%= @closet.name %></h3>
+<%= link_to "delete", {:controller => :closets, :action => 'destroy', :id => @closet.id }, :method => :delete %></center>
 
-<div class = "row">
 
-  <div class = "col-md-4">
-    <h1><%= link_to "+", new_search_path, {:style=>'display:inline-block;''width:250px;''height:250px;''text-align: center;''padding-top: 100px;
-  ''text-decoration: none;', :class => "butt"} %></h1>
+  <h1><%= link_to "+", new_search_path, {:style=>'display:inline-block;''width:250px;''height:250px;''text-align: center;''padding-top: 100px;
+''text-decoration: none;', :class => "butt"} %></h1>
+
+
+<% @closet.items.in_groups_of(4) do |group| %>
+  <div class="row">
+    <% group.compact.each do |item| %>
+    <div class="col-sm-6 col-md-2">
+    <div class="thumbnail">
+      <%= link_to item.name, item_path(item) %><br>
+      <%= image_tag item.image_url %>
+      <div class = 'caption'>
+      <strong>Price: </strong><%= item.prices.last.price %><br>
+      <% closet_item = ClosetItem.where(closet_id: @closet.id, item_id: item.id) %>
+      <%= link_to 'Delete', closet_item_path(closet_item[0].id), method: :delete %>
+    </div>
+    </div>
   </div>
-
-<% @closet.items.each do |item| %>
- <div class = "col-md-4" style = "height:200px; width:200px;">
-  <%= link_to item.name, item_path(item) %><br>
-  <%= image_tag item.image_url %><br>
-  <strong>Price: </strong>
-  <%= item.prices.last.price %><br>
-  <strong>Source Type: </strong><%= item.source_type %><br>
-  <strong>Source ID: </strong><%= item.source_id %><br>
-  <%= link_to 'Delete', closet_item_path, method: :delete %><br>
- </div>
-
-
   <% end %>
-
-  </div>
 </div>
+<% end %>

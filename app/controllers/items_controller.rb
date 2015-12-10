@@ -9,9 +9,13 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
-    @item.prices << Price.create(price: params[:item][:price])
-    redirect_to new_closet_item_path
+    @item = Item.new(item_params)
+    if @item.exists?
+      @item = Item.find_by(source_id: @item.source_id)
+    end
+    @item.prices << Price.new(price: params[:item][:price])
+    @item.save
+    redirect_to new_closet_item_path(:item_id => @item)
   end
 
   def show
