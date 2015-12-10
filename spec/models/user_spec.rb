@@ -25,8 +25,8 @@ require 'spec_helper'
 
 describe User do
   before :each do
-    @michael = User.new(id: 1, username: "michael", email: "helloiammichael@hello.com", password: "passwordpassword")
-    @archer  = User.new(id: 2, username: "archer", email: "helloiamarcher@archer.com", password: "passwordpasswordpass")
+    @michael = User.new(id: 1, username: "michael", email: "helloiammichael@hello.com", phone_number: "2837465290", password: "passwordpassword")
+    @archer  = User.new(id: 2, username: "archer", email: "helloiamarcher@archer.com", phone_number: "2837465290",password: "passwordpasswordpass")
     @michael.save
     @archer.save
 end
