@@ -5,7 +5,6 @@
 #  id          :integer          not null, primary key
 #  name        :string
 #  url         :string
-#  price       :integer
 #  source_id   :string
 #  source_type :string
 #  image_url   :string
@@ -20,6 +19,7 @@ class Item < ActiveRecord::Base
 
   validates :source_id, presence: true, uniqueness: true
   validates :source_type, presence: true
+  acts_as_votable
 
   def exists?
     Item.exists?(source_id: self.source_id)
@@ -68,8 +68,5 @@ class Item < ActiveRecord::Base
     second_last_price = self.prices[-2]
     price_change = last_price.price.to_i - second_last_price.price.to_i
   end
-
-
-
 
 end

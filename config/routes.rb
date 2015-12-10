@@ -13,7 +13,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items
+  resources :items do
+    member do
+      put "like", to: "items#upvote"
+    end
+  end
+
   resources :closet_items, only: [:create, :new, :destroy]
 
   resources :relationships, only: [:create, :destroy]

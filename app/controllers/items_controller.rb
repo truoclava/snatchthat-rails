@@ -22,6 +22,12 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def upvote
+    @item = Item.find(params[:id])
+    @item.upvote_by current_user
+    redirect_to :back
+  end
+
   private
 
   def item_params

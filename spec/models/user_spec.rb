@@ -15,6 +15,10 @@
 #  last_sign_in_ip        :inet
 #  phone_number           :string
 #  notifications          :boolean          default(TRUE)
+#  avatar_file_name       :string
+#  avatar_content_type    :string
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  slug                   :string
@@ -50,4 +54,3 @@ end
     end
   end
 end
-
