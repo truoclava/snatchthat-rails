@@ -44,13 +44,15 @@
 
     <%@user.activity_feed.each do |activity|%>
 
-    <br>
-
+    <br><br>
+    <strong>
     <% if current_user.username == activity.user.username %>
     You
     <%else%>
    <%= link_to activity.user.username, activity.user %>
    <% end %>
+  </strong>
+   <br>
       <% if activity.trackable.class == Closet && activity.action == "create" %>
       <em class = "text-muted">created closet </em> <%=activity.trackable.name%>
 
@@ -58,12 +60,12 @@
       <em class = "text-muted">deleted closet </em> <%=activity.trackable.name%>
 
 
-      <%# elsif activity.trackable.class == ClosetItem && activity.action == "create"%>
-    <%# em class = "text-muted">added</em> item <%= Item.find(activity.trackable.item_id).name %> <%# em class = "text-muted">to</em> <%= Closet.find(activity.trackable.closet_id).name %>
+      <% elsif activity.trackable.class == ClosetItem && activity.action == "create"%>
+      <em class = "text-muted">Added</em> <%=Item.find(activity.trackable.item_id).name%> <em class = "text-muted">to</em> <%=Closet.find(activity.trackable.closet_id).name%>
 
-    <% elsif activity.trackable_type == "ClosetItem" && activity.action == "destroy"%>
+    <% elsif activity.trackable.class == ClosetItem && activity.action == "destroy"%>
 
-    <em class = "text-muted">deleted</em> item <em class = "text-muted">from</em> closet
+    <em class = "text-muted">Deleted</em> <%=Item.find(activity.trackable.item_id).name%> <em class = "text-muted">from</em> <%=Closet.find(activity.trackable.closet_id).name%>
 
       <% elsif activity.trackable.class == User && activity.action == "create"%>
       <em class = "text-muted">followed</em> <%= activity.trackable.username %>
