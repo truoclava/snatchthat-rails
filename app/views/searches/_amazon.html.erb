@@ -1,5 +1,28 @@
-<%= form_tag searches_path, method: "get" do %>
-  <%= text_field_tag :keyword, 'keyword', class: "form-control", id: "inputDefault", style: "width: 250px;"  %><br>
-  <%= hidden_field_tag 'item[source_type]', 'Amazon' %>
-  <%= submit_tag 'Search Amazon', class: 'btn btn-default'%>
+<h3><%= @results.length %> items matching "<%= @search.keyword %>" from <%= @search.source_type %> </h3>
+
+<% @results.in_groups_of(3) do |group| %>
+  <div class="row">
+    <% group.compact.each do |result| %>
+      <center>
+      <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <h5><%= link_to result['name'], result['url'], target: "_blank" %></h5>
+        <%= image_tag result['image_url'] %>
+        <div class="caption">
+        <p>Price: <%= result['price']%></p>
+        <%= form_tag items_path target: "_blank" do %>
+        <%= hidden_field_tag 'item[name]', result["name"] %>
+        <%= hidden_field_tag 'item[url]', result["url"] %>
+        <%= hidden_field_tag 'item[image_url]', result["image_url"] %>
+        <%= hidden_field_tag 'item[source_id]', result["source_id"] %>
+        <%= hidden_field_tag 'item[price]', result["price"] %>
+        <%= hidden_field_tag 'item[source_type]', @search.source_type %>
+        <p><%= submit_tag 'Add to Closet', class: 'btn btn-primary' %></p>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</center>
+  <% end %>
+</div>
 <% end %>
