@@ -10,7 +10,4 @@ class SearchesController < ApplicationController
       @results = @search.results
     end
   end
-
-
-
 end
