@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api, :defaults => { :format => 'json' } do
+    resources :users
+  end
+
   resources :items do
     member do
       put "like", to: "items#upvote"
