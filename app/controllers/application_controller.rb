@@ -1,18 +1,10 @@
 class ApplicationController < ActionController::Base
+
   include ActionController::Serialization
   before_filter :cors_preflight_check
   after_filter :cors_set_access_control_headers
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :phone_number, :password, :password_confirmation) }
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :phone_number, :notifications, :password, :password_confirmation, :current_password, :avatar) }
-  end
-
 
   def cors_set_access_control_headers
     headers['Access-Control-Allow-Origin'] = '*'
@@ -32,6 +24,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :phone_number, :password, :password_confirmation) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :phone_number, :notifications, :password, :password_confirmation, :current_password, :avatar) }
+  end
 
 
   def track_activity(trackable, action = params[:action])
