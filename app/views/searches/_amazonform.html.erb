@@ -1,0 +1,6 @@
+
+<%= form_tag searches_path, method: "get" do %>
+  <%= text_field_tag :keyword, 'keyword', class: "form-control", id: "inputDefault", style: "width: 250px;"  %><br>
+  <%= hidden_field_tag 'item[source_type]', 'Amazon' %>
+  <%= submit_tag 'Search Amazon', class: 'btn btn-default'%>
+<% end %>
