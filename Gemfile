@@ -39,6 +39,8 @@ gem 'httparty'
 gem 'paperclip'
 gem 'descriptive-statistics'
 
+gem 'active_model_serializers'
+gem "rest-client"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
