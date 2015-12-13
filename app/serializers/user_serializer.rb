@@ -1,3 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :closet_ids, :item_ids
+  attributes :id, :username, :email
+  has_many :closets
+  embed :ids
 end
