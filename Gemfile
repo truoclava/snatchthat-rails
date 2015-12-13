@@ -39,8 +39,6 @@ gem 'twilio-ruby'
 gem 'httparty'
 gem 'paperclip'
 gem 'descriptive-statistics'
-gem 'active_model_serializers'
-gem 'rest-client'
 gem 'rack-cors', :require => 'rack/cors'
 
 

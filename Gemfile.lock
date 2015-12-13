@@ -81,7 +81,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    domain_name (0.5.25)
+    domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     excon (0.45.4)
@@ -127,11 +127,7 @@ GEM
     minitest (5.8.3)
     multi_json (1.11.2)
     multi_xml (0.5.5)
-<<<<<<< HEAD
     netrc (0.10.3)
-=======
-    netrc (0.11.0)
->>>>>>> c61b1a404c6680f0c3dd0cf96e65d7f8c2eb7253
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
