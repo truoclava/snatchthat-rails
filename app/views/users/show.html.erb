@@ -19,7 +19,7 @@
     <br><br>
     <%@user.closets.each do |closet|%>
     <div class = "col-sm-4">
-      <p><%=closet.name%></p>
+      <p><%= link_to closet.name, user_closet_path(@user, closet) %></p>
       <p>
         <% closet.items.each do |item| %>
         <%= image_tag item.image_url %>
