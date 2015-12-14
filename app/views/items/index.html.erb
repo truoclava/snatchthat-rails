@@ -1,4 +1,5 @@
 <h2>All Items</h2>
 <% @items.each do |item| %>
-  <%= image_tag item.image_url %><br>
+  <%= image_tag item.image_url %>
+  <%= link_to item.name, item_path(item) %><br>
 <% end %>
