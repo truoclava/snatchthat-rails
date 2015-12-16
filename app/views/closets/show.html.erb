@@ -1,24 +1,21 @@
 <center><h3><%= @closet.name %></h3>
-<%= link_to "delete", {:controller => :closets, :action => 'destroy', :id => @closet.id }, :method => :delete %></center>
-
-
-  <h1><%= link_to "+", new_search_path, {:style=>'display:inline-block;''width:250px;''height:250px;''text-align: center;''padding-top: 100px;
-''text-decoration: none;', :class => "butt"} %></h1>
+<%= link_to "delete", {:controller => :closets, :action => 'destroy', :id => @closet.id }, :method => :delete %> | <%= link_to "add new item", new_search_path %></center>
 
 
 <% @closet.items.in_groups_of(4) do |group| %>
   <div class="row">
     <% group.compact.each do |item| %>
-    <div class="col-sm-6 col-md-2">
-    <div class="thumbnail">
-      <%= link_to item.name, item_path(item) %><br>
-      <%= image_tag item.image_url %>
-      <div class = 'caption'>
-      <strong>Price: </strong><%= item.prices.last.price %><br>
-      <% closet_item = ClosetItem.where(closet_id: @closet.id, item_id: item.id) %>
-      <%= link_to 'Delete', closet_item_path(closet_item[0].id), method: :delete %>
-    </div>
-    </div>
+    <div class="col-xs-6 col-sm-3">
+      <div class="card">
+        
+        <%= image_tag item.image_url, :style => "height: 100%"%>
+          <div class = 'card_content'>
+            <strong>Price: </strong><%= item.prices.last.price %><br>
+            <% closet_item = ClosetItem.where(closet_id: @closet.id, item_id: item.id) %>
+            <%= link_to item.name, item_path(item) %><br>
+            <%= link_to 'Delete', closet_item_path(closet_item[0].id), method: :delete %>
+          </div>
+      </div>
   </div>
   <% end %>
 </div>
