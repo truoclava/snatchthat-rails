@@ -69,4 +69,11 @@ class Item < ActiveRecord::Base
     price_change = last_price.price.to_i - second_last_price.price.to_i
   end
 
+  def prices_over_time
+    prices_by_date_created = self.prices.pluck(:created_at, :price).map do |item_price|
+      [item_price[0].to_date, item_price[1].to_i]
+    end
+  
+  end
+
 end

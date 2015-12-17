@@ -28,6 +28,12 @@ class ItemsController < ApplicationController
     redirect_to :back
   end
 
+  def prices_over_time
+    item = Item.find(params[:id])
+    prices_over_time_array = item.prices_over_time
+    render :json => {prices_over_time: prices_over_time_array}
+  end
+
   private
 
   def item_params
