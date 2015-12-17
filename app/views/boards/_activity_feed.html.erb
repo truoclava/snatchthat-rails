@@ -8,5 +8,10 @@
    <% end %>
   </strong>
    <br> 
-    <%=ActivityFeed.message(activity).html_safe%>
+    <% if activity.trackable_type == "Item" %>
+      <em class = 'text-muted'><%=ActivityFeed.actionmessage(activity)%></em> <%=ActivityFeed.subject(activity)%> <em class = 'text-muted'> <%= ActivityFeed.preposition(activity) %> </em><%=ActivityFeed.closet(activity)%>
+    <% else %>
+      <em class = 'text-muted'> <%=ActivityFeed.actionmessage(activity)%></em> <%=ActivityFeed.subject(activity)%>
+    <% end %>
+
 <%end%>

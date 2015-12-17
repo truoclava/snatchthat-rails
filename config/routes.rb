@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/prices-over-time', to: 'items#prices_over_time'
+
   resources :closet_items, only: [:create, :new, :destroy]
 
   resources :relationships, only: [:create, :destroy]

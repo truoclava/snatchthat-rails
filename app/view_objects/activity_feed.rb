@@ -1,26 +1,41 @@
 class ActivityFeed
 
-  def self.message(activity)
-   if activity.trackable_type == "Closet" && activity.action == "create" 
-      "<em class = 'text-muted'>created closet</em> #{activity.trackable_name}" 
+  def self.actionmessage(activity)
+    if activity.trackable_type == "Closet" && activity.action == "create"
+      "created closet"
 
       elsif activity.trackable_type == "Closet" && activity.action == "destroy"
-      "<em class = 'text-muted'>deleted closet</em> #{activity.trackable_name}" 
-
+      "deleted closet" 
 
       elsif activity.trackable_type == "Item" && activity.action == "create"
-      "<em class = 'text-muted'>added</em> #{activity.trackable_name} <em class = 'text-muted'>to</em> #{activity.trackable_source}" 
+      "added" 
       
       elsif activity.trackable_type == "Item" && activity.action == "destroy"
-      "<em class = 'text-muted'>deleted</em> #{activity.trackable_name} <em class = 'text-muted'>from</em> #{activity.trackable_source}"
+      "deleted"
 
       elsif activity.trackable_type == "User" && activity.action == "create"
-      "<em class = 'text-muted'>followed</em> #{activity.trackable.username}" 
+      "followed" 
   
       elsif activity.trackable_type == "User" && activity.action == "destroy"
-      "<em class = 'text-muted'>unfollowed</em> #{activity.trackable.username}"
-      
+      "unfollowed" 
+    end
   end
-end
+
+  def self.subject(activity)
+    activity.trackable_name
+  end
+
+  def self.preposition(activity)
+    if activity.action == "create"
+      "to"
+    else
+      "from"
+    end
+  end
+
+  def self.closet(activity)
+    activity.trackable_source
+  end
 
 end
+
