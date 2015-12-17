@@ -1,6 +1,6 @@
 $(document).on('page:change', function(){
 
- 
+
    $.ajax({
            url: "/prices-over-time",
            type: "GET",
@@ -21,7 +21,7 @@ function buildPricesOverTimeGraph(pricesOverTime) {
        width = 960 - margin.left - margin.right,
        height = 500 - margin.top - margin.bottom;
 
-       var parseDate = d3.time.format("%Y-%m-%d").parse;
+       var parseDate = d3.time.format("%H:%M").parse;
 
 
        var x = d3.time.scale()
@@ -53,7 +53,7 @@ function buildPricesOverTimeGraph(pricesOverTime) {
               date: parseDate(d[0]),
               price: d[1]
            };
-       
+
        });
 
 

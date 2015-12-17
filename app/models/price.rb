@@ -17,6 +17,7 @@ class Price < ActiveRecord::Base
     Item.all.each do |item|
       if item.source_type == "Amazon"
         current_price = item.get_amazon_price(item.source_id)
+        current_price.slice!(0)
         price_dif = item.prices.last.price.to_i - current_price.to_i
         user = item.closets.first.board.user
         if price_dif != 0 && user.notifications?(user.id)

@@ -13,7 +13,9 @@ class ItemsController < ApplicationController
     if @item.exists?
       @item = Item.find_by(source_id: @item.source_id)
     end
-    @item.prices << Price.new(price: params[:item][:price])
+    price = params[:item][:price]
+    price.slice!(0)
+    @item.prices << Price.new(price: price)
     @item.save
     redirect_to new_closet_item_path(:item_id => @item)
   end

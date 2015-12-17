@@ -20,8 +20,7 @@ module Adapters
       url = info['DetailPageURL']
       image_url = info['MediumImage']['URL']
       price = info['OfferSummary']['LowestNewPrice']['FormattedPrice']
-
-      Item.create(name: name, url: url, price: price, source_id: source_id, image_url: image_url)
+      Item.create(name: name, url: url, source_id: source_id, image_url: image_url)
     end
 
   end

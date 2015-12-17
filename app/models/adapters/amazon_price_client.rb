@@ -17,6 +17,7 @@ module Adapters
       info = results['ItemLookupResponse']['Items']['Item']
 
       price = info['OfferSummary']['LowestNewPrice']['FormattedPrice']
+      price
     end
 
   end
