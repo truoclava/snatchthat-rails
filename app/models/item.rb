@@ -75,6 +75,8 @@ class Item < ActiveRecord::Base
       created_time = created_time.strftime('%H:%M')
       [created_time, item_price[1].to_i]
     end
+    prices_by_date_created.slice!(0)
+    prices_by_date_created
   end
 
 end
