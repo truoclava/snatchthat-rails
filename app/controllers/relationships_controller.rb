@@ -4,7 +4,7 @@ class RelationshipsController < ApplicationController
      @user = User.find(params[:followed_id])
      # binding.pry
     user = User.find(params[:followed_id])
-    
+
     current_user.follow(user)
     track_activity(user)
 
@@ -15,10 +15,10 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-     @user = Relationship.find(params[:id]).followed
+    @user = Relationship.find(params[:id]).followed
 
     user = Relationship.find(params[:id]).followed
-    
+
     current_user.unfollow(user)
     track_activity(user)
 
