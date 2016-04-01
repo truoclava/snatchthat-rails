@@ -64,9 +64,11 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   acts_as_voter
-
+  
+  
   attr_accessor :login
-
+  
+  
   # Follows a user.
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
