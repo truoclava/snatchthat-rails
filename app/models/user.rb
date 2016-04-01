@@ -84,18 +84,10 @@ class User < ActiveRecord::Base
     following.include?(other_user)
   end
   
-  def feed(user_id)
-    
-    @followed_closets = []
-    relationship = Relationship.where(followed_id: id)
-      relationship.each do |relation|
-        @followed_closets << Closet.where(board_id: relation.follower_id)
-        
-      end
-    return @followed_closets.flatten!
-    # following_ids = "SELECT followed_id FROM relationships
-    #                    WHERE  follower_id = :board_id"
-    # Closet.where("board_id IN (#{following_ids})", board_id: id)
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                       WHERE  follower_id = :board_id"
+    Closet.where("board_id IN (#{following_ids})", board_id: id)
   end
 
   def activity_feed

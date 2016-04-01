@@ -45,16 +45,16 @@
   </div>
 
   <div class="tab-pane fade" id="profile">
-    <%@user.feed(current_user.id).each do |followed|%>
-    <div class = "col-sm-4">
-      <p>
-      <br>
-      <%= link_to followed.name, user_closet_path(followed.user, followed) %>
-        <h6>By:<a href = "/users/<%=User.find(followed.board_id).slug%>"> <%= User.find(followed.board_id).username %></h6></a>
-      </p>
-    <br><br>
-    </div>
-  <%end%>
     
+    <%@user.feed.each do |followed|%>
+      <div class = "col-sm-4">
+        <p>
+        <br>
+        <%= link_to followed.name, user_closet_path(followed.user, followed) %>
+          <h6>By:<a href = "/users/<%=User.find(followed.board_id).slug%>"> <%= User.find(followed.board_id).username %></h6></a>
+        </p>
+      <br><br>
+      </div>
+    <%end%>
   </div>
 </div>
